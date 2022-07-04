@@ -54,28 +54,28 @@ Desenvolver uma aplicação para gerenciamento de ferramentas em um ambiente de 
 
 - Atributos
 
-> id_cpf : int
-> nome : string
-> sobrenome : string
-> telefone : int
-> turno : string
-> equipe : string
+> - id_cpf : int
+> - nome : string
+> - sobrenome : string
+> - telefone : int
+> - turno : string
+> - equipe : string
 
 - Estados
-> admin : boolean
+> - admin : boolean
 
 ### :hammer: Ferramenta
 
 - Atributos
-> id : int
-> modelo : string
-> descricao : string
-> fabricante : int
-> voltagem : int
-> part_num : int
-> tamanho : int
-> tipo : string
-> material : string
+> - id : int
+> - modelo : string
+> - descricao : string
+> - fabricante : int
+> - voltagem : int
+> - part_num : int
+> - tamanho : int
+> - tipo : string
+> - material : string
 
 - Estados
 > disponivel : boolean
@@ -83,15 +83,15 @@ Desenvolver uma aplicação para gerenciamento de ferramentas em um ambiente de 
 ### :page_with_curl: Reserva de Ferramenta
 
 - Atributos
-> id : int
-> data_reserva : time
-> data_retirada : time
-> data_devolucao : time
-> responsavel : tecnico
-> item : ferramenta
+> - id : int
+> - data_reserva : time
+> - data_retirada : time
+> - data_devolucao : time
+> - responsavel : tecnico
+> - item : ferramenta
 
 - Estados
-> emAndamento : boolean
+> - emAndamento : boolean
 
 
 ## Telas de navegação
