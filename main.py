@@ -1,16 +1,34 @@
-# This is a sample Python script.
+import csv
 
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
-
-
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
+# Variáveis globais
+databasePath = "database.csv"
 
 
-# Press the green button in the gutter to run the script.
+def main():
+    rows = [
+        {'nome': 'João', 'sobrenome': 'Da Silva', 'telefone': 123456789, 'turno': 'M', 'equipe': 'B'},
+        {'nome': 'Maria', 'sobrenome': 'Dos Santos', 'telefone': 111111111, 'turno': 'M', 'equipe': 'B'},
+    ]
+    write(rows)
+    read()
+
+
+def write(rows):
+    # csv header
+    fieldnames = rows[0].keys()
+
+    with open(databasePath, 'w', encoding='UTF8', newline='') as f:
+        writer = csv.DictWriter(f, fieldnames=fieldnames)
+        writer.writeheader()
+        writer.writerows(rows)
+
+
+def read():
+    with open(databasePath, 'r') as file:
+        csv_file = csv.DictReader(file)
+        for row in csv_file:
+            print(dict(row))
+
+
 if __name__ == '__main__':
-    print_hi('PyCharm')
-
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+    main()
