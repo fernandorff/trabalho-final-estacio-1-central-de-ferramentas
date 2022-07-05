@@ -15,21 +15,33 @@ class Tecnico:
 
 
 def main():
-    rows = []
-    menu = 1
+    rows = read()
+    menu = 0
 
     while menu != 9:
-        id_cpf = input("Digite o cpf: ")
-        nome = input("Digite o nome: ")
-        sobrenome = input("Digite o sobrenome: ")
-        telefone = input("Digite o telefone celular ou rádio: ")
-        turno = input("Digite o turno (M = Manhã, T = Tarde, N = Noite): ")
-        equipe = input("Digite o nome da equipe: ")
-        rows.append(Tecnico(id_cpf, nome, sobrenome, telefone, turno, equipe))
-        menu = int(input("Para adicionar novo Técnico, digite 1, para terminar, digite 9: "))
+        if menu == 1:
+            display(rows)
+        elif menu == 2:
+            tecnico = create_tecnico()
+            rows.append(tecnico)
+        menu = int(input("\n-Menu Principal----------------------------\n"
+                         "Digite 1 para listar técnicos cadastrados.\n"
+                         "Digite 2 para cadastrar novo técnico.\n"
+                         "Digite 9 para terminar.\n"))
 
     write(rows)
     read()
+
+
+def create_tecnico():
+    id_cpf = input("Digite o cpf: ")
+    nome = input("Digite o nome: ")
+    sobrenome = input("Digite o sobrenome: ")
+    telefone = input("Digite o telefone celular ou rádio: ")
+    turno = input("Digite o turno (M = Manhã, T = Tarde, N = Noite): ")
+    equipe = input("Digite o nome da equipe: ")
+    tecnico = Tecnico(id_cpf, nome, sobrenome, telefone, turno, equipe)
+    return tecnico
 
 
 def write(rows):
@@ -43,10 +55,19 @@ def write(rows):
 
 
 def read():
-    with open(databasePath, 'r') as file:
+    rows = []
+    with open(databasePath, 'r', encoding='UTF8') as file:
         csv_file = csv.DictReader(file)
         for row in csv_file:
-            print(dict(row))
+            dicionario = dict(row)
+            tecnico = Tecnico(**dicionario)
+            rows.append(tecnico)
+    return rows
+
+
+def display(rows):
+    for row in rows:
+        print(row.__dict__)
 
 
 if __name__ == '__main__':
