@@ -15,10 +15,19 @@ class Tecnico:
 
 
 def main():
-    rows = [
-        Tecnico(12345678901, "João", "Da Silva", 123456789, 'M', 'B'),
-        Tecnico(11111111111, "Maria", "Dos Santos", 111111111, 'M', 'B')
-    ]
+    rows = []
+    menu = 1
+
+    while menu != 9:
+        id_cpf = input("Digite o cpf: ")
+        nome = input("Digite o nome: ")
+        sobrenome = input("Digite o sobrenome: ")
+        telefone = input("Digite o telefone celular ou rádio: ")
+        turno = input("Digite o turno (M = Manhã, T = Tarde, N = Noite): ")
+        equipe = input("Digite o nome da equipe: ")
+        rows.append(Tecnico(id_cpf, nome, sobrenome, telefone, turno, equipe))
+        menu = int(input("Para adicionar novo Técnico, digite 1, para terminar, digite 9: "))
+
     write(rows)
     read()
 
