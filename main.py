@@ -16,21 +16,21 @@ class Tecnico:
 
 def main():
     rows = [
-        Tecnico(12345678901, "João", "Da Silva", 123456789, 'M', 'B').__dict__,
-        Tecnico(11111111111, "Maria", "Dos Santos", 111111111, 'M', 'B').__dict__
+        Tecnico(12345678901, "João", "Da Silva", 123456789, 'M', 'B'),
+        Tecnico(11111111111, "Maria", "Dos Santos", 111111111, 'M', 'B')
     ]
     write(rows)
     read()
 
 
 def write(rows):
-    # csv header
-    fieldnames = rows[0].keys()
+    data = [row.__dict__ for row in rows]
+    fieldnames = data[0].keys()
 
     with open(databasePath, 'w', encoding='UTF8', newline='') as f:
         writer = csv.DictWriter(f, fieldnames=fieldnames)
         writer.writeheader()
-        writer.writerows(rows)
+        writer.writerows(data)
 
 
 def read():
