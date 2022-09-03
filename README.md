@@ -72,10 +72,10 @@ Desenvolver uma aplicação para gerenciamento de ferramentas em um ambiente de 
 > - descricao : string
 > - fabricante : int
 > - voltagem : int
-> - part_num : int
-> - tamanho : int
+> - peso_g : int
 > - tipo : string
 > - material : string
+> - quantidade : int
 
 - Estados
 > disponivel : boolean
