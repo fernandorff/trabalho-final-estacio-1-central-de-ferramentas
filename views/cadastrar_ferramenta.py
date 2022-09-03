@@ -42,6 +42,11 @@ class CadastrarFerramenta(CadastroBase):
         return Ferramenta(**dicionario)
 
     def confirma_cadastro(self):
+        if not self.valida_id():
+            return
+
+        # TODO: fazer as outras validações aqui
+
         ferramenta = Ferramenta(self.id_ferramenta.get(),
                                 self.modelo.get(),
                                 self.descrição.get(),
@@ -54,8 +59,15 @@ class CadastrarFerramenta(CadastroBase):
                                 self.material.get(),
                                 self.reserva_máxima.get())
 
-        # TODO: realizar validações dos campos
         self.salva_cadastro(ferramenta)
+
+    def valida_id(self):
+        id_ferramenta = self.id_ferramenta.get()
+        if not id_ferramenta.isdigit():
+            self.abre_popup('Valor inválido', 'O campo "Id Ferramenta" deve conter apenas números.')
+            return False
+
+        return True
 
     def limpa_campos(self):
         self.id_ferramenta.set('')

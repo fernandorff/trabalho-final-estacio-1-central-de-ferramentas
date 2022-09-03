@@ -23,6 +23,9 @@ class JanelaBase(Frame):
         janela.geometry(f'{largura}x{altura}+{centro_x}+{centro_y}')
 
     def abre_popup(self, titulo, mensagem):
+        if self.popUp is not None:
+            self.popUp.destroy()
+
         self.popUp = PopUp(titulo, mensagem)
 
 
@@ -80,6 +83,7 @@ class CadastroBase(JanelaBase):
         entry.grid(column=1, row=self.linha, sticky=tk.EW, padx=10, pady=5)
 
         self.linha += 1
+        return entry
 
     def salva_cadastro(self, objeto):
         self.bd.adiciona_linha(objeto)

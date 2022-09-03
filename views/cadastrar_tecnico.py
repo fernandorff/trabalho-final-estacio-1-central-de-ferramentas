@@ -1,7 +1,6 @@
 import tkinter as tk
 from models import Tecnico
 from views.janela_base import CadastroBase
-from banco_de_dados import BancoDeDados
 
 
 class CadastrarTécnico(CadastroBase):
@@ -33,6 +32,12 @@ class CadastrarTécnico(CadastroBase):
         return Tecnico(**dicionario)
 
     def cadastra_técnico(self):
+        # validações
+        if not self.valida_cpf():
+            return
+
+        # TODO: fazer as outras validações aqui
+
         tecnico = Tecnico(self.cpf.get(),
                           self.nome.get(),
                           self.sobrenome.get(),
@@ -40,8 +45,19 @@ class CadastrarTécnico(CadastroBase):
                           self.turno.get(),
                           self.equipe.get())
 
-        # TODO: realizar validações dos campos
         self.salva_cadastro(tecnico)
+
+    def valida_cpf(self):
+        cpf = self.cpf.get()
+        if not cpf.isdigit():
+            self.abre_popup('Valor inválido', 'O campo CPF deve conter apenas números.')
+            return False
+
+        if len(cpf) != 11:
+            self.abre_popup('Valor inválido', 'O campo CPF deve conter 11 dígitos')
+            return False
+
+        return True
 
     def limpa_campos(self):
         self.cpf.set('')
