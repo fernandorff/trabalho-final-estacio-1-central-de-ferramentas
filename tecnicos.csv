@@ -1,20 +1,2 @@
 id_cpf,nome,sobrenome,telefone,turno,equipe
-1111,Fulano,Da Silva,1111,M,Equipe1
-2222,Ciclano,Dos Santos,2222,T,Equipe2
-3333,Aristeu,Mendonça,3333,N,Equipe1
-4444,Bernardo,Silveira,444,T,Equipe1
-555,Carlos,Alberto,555,N,Equipe3
-123,bla bla,da silva,9999,M,A
-22222,aaaaa,da silva,2342342,M,A
-22222,João,da silva,2342342,M,A
-A,B,C,D,E,F
-AA,BB,CC,DD,EE,FF
-987uoioikljhjkl,dfg,dfgdfg,dfgdfgdfg,dfgdfgdf,dfgdfgdfg
-11122233312,,,,a,
-11122233312,,,,M,
-11122233312,,,,a,
-11122233312,,,,a,
-11122233312,,,,M,
-11122233312,,,,a,
-11122233312,,,,a,
-12312312312,,,,M,
+12312312312,Fernando,Rocha Fonteles Filho,85999292882,M,A
