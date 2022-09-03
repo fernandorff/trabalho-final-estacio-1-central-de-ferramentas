@@ -21,7 +21,7 @@ class CadastrarFerramenta(CadastroBase):
 
     def cria_elementos(self):
 
-        opcoes_voltagem = ["110v", "127v", "220v", "380v"]
+        opcoes_voltagem = ["110v", "127v", "220v", "380v", "Baterias", "N/A"]
 
         opcoes_tipo = ['Camera fotográfica',
                        'Gravador de vídeo',
@@ -39,12 +39,12 @@ class CadastrarFerramenta(CadastroBase):
 
         self.adiciona_campo('Identificação da Ferramenta:', self.id_ferramenta)
         self.adiciona_campo('Modelo:', self.modelo)
-        self.adiciona_campo('Descrição:', self.descricao)
         self.adiciona_campo('Fabricante:', self.fabricante)
-        self.adiciona_dropdown('Voltagem:', self.voltagem, opcoes_voltagem)
+        self.adiciona_campo('Descrição:', self.descricao)
         self.adiciona_campo('Peso em grams:', self.peso_g)
-        self.adiciona_dropdown('Tipo:', self.tipo, opcoes_tipo)
         self.adiciona_campo('Quantidade disponivel:', self.quantidade)
+        self.adiciona_dropdown('Voltagem:', self.voltagem, opcoes_voltagem)
+        self.adiciona_dropdown('Tipo:', self.tipo, opcoes_tipo)
 
         cadastra_button = tk.Button(self.janela, text="Cadastrar", command=self.confirma_cadastro)
         cadastra_button.grid(column=0, row=self.linha + 2, padx=5, pady=8, columnspan=2)

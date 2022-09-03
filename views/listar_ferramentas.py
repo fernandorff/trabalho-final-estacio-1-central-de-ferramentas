@@ -18,7 +18,7 @@ class ListarFerramentas(ListagemBase):
         # define as colunas
         self.tabela['columns'] = ('id_ferramenta',
                                   'modelo',
-                                  'descrição',
+                                  'descricao',
                                   'fabricante',
                                   'voltagem',
                                   'peso_g',
@@ -42,7 +42,6 @@ class ListarFerramentas(ListagemBase):
         self.tabela.heading('descricao', text='Descrição', anchor=CENTER)
         self.tabela.heading('fabricante', text='Fabricante', anchor=CENTER)
         self.tabela.heading('voltagem', text='Voltagem', anchor=CENTER)
-        self.tabela.heading('part_num', text='Part Number', anchor=CENTER)
         self.tabela.heading('peso_g', text='Peso em grams', anchor=CENTER)
         self.tabela.heading('tipo', text='Tipo', anchor=CENTER)
         self.tabela.heading('quantidade', text='Quantidade disponível', anchor=CENTER)

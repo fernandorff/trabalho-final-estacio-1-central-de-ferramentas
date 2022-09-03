@@ -1,25 +1,13 @@
-# importing the module
-import csv
+from tkinter import *
+from tkcalendar import  *
+from datetime import date
 
-filename = open('tecnicos.csv', 'r')
+root = Tk()
+root.title('FF')
+root.geometry("600x400")
 
-file = csv.DictReader(filename)
+cal = Calendar(root, selectmode="day", year=date.today().year, month=date.today().month, day=date.today().day)
 
-id_cpf = []
-nome = []
-sobrenome = []
+cal.pack()
 
-for col in file:
-    id_cpf.append(col['id_cpf'])
-    nome.append(col['nome'])
-    sobrenome.append(col['sobrenome'])
-
-opcoes_tecnico = []
-
-index = 0
-for i in id_cpf:
-    conjunto = [id_cpf[index], nome[index], sobrenome[index]]
-    opcoes_tecnico.append(' '.join(conjunto))
-    index += 1
-
-print(opcoes_tecnico)
+def grab_date():
