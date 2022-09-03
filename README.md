@@ -108,6 +108,7 @@ Desenvolver uma aplicação para gerenciamento de ferramentas em um ambiente de 
 - Cadastro de ferramentas (admin only)
 
 ```mermaid
+flowchart TB
     Menu --> Consulta.T 
     Menu --> Cadastro.T
     Menu --> Consulta.F 
