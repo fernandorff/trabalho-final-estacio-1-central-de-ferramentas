@@ -1,13 +1,23 @@
-turnos_validos = ['m', 'M', 't', 'T', 'n', 'N']
-turno = 'M'
+from tkinter import *
 
-# if turno not in turnos_validos:
-#     print('nao esta')
-# else:
-#     print('esta
+OPTIONS = [
+"Jan",
+"Feb",
+"Mar"
+] #etc
 
-a = 'rocha fonteles filho'
-b = a.split(' ')
-print(b)
-c = ''.join(b)
-print(c)
+master = Tk()
+
+variable = StringVar(master)
+variable.set(OPTIONS[0]) # default value
+
+w = OptionMenu(master, variable, *OPTIONS)
+w.pack()
+
+def ok():
+    print ("value is:" + variable.get())
+
+button = Button(master, text="OK", command=ok)
+button.pack()
+
+mainloop()

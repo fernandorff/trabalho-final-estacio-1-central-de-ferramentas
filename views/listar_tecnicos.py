@@ -2,8 +2,8 @@ from tkinter import *
 from models import Tecnico
 from views.janela_base import ListagemBase
 
-
 class ListarTécnicos(ListagemBase):
+
     def __init__(self):
         ListagemBase.__init__(self, 'Listagem de Técnicos', 'tecnicos.csv')
 

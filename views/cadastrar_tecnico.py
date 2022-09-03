@@ -1,4 +1,5 @@
 import tkinter as tk
+from tkinter import *
 from models import Tecnico
 from views.janela_base import CadastroBase
 
@@ -18,14 +19,20 @@ class CadastrarTécnico(CadastroBase):
         self.cria_elementos()
 
     def cria_elementos(self):
+
+        opcoes_turno = ["Integral", "Manhã", "Tarde", "Noite"]
+
+        opcoes_equipe = ["Alfa α", "Beta β", "Gama γ", "Delta δ"]
+
         self.adiciona_campo('CPF:\n (11 digitos, apenas numeros)', self.cpf)
         self.adiciona_campo('Nome:', self.nome)
         self.adiciona_campo('Sobrenome:', self.sobrenome)
         self.adiciona_campo('Telefone com DDD:\n (11 digitos, sem parenteses)', self.telefone)
-        self.adiciona_campo('Turno:\n (M=Manhã, T=Tarde, N=Noite)', self.turno)
-        self.adiciona_campo('Equipe:\n (Apenas a letra da equipe)', self.equipe)
+        self.adiciona_dropdown('Turno:', self.turno, opcoes_turno)
+        self.adiciona_dropdown('Equipe:', self.equipe, opcoes_equipe)
 
         cadastra_button = tk.Button(self.janela, text="Cadastrar", command=self.cadastra_técnico)
+
         cadastra_button.grid(column=0, row=self.linha + 2, padx=5, pady=8, columnspan=2)
 
     def cria_objeto(self, dicionario):
@@ -40,10 +47,6 @@ class CadastrarTécnico(CadastroBase):
         if not self.valida_sobrenome():
             return
         if not self.valida_telefone():
-            return
-        if not self.valida_turno():
-            return
-        if not self.valida_equipe():
             return
 
         tecnico = Tecnico(self.cpf.get(),
@@ -102,24 +105,6 @@ class CadastrarTécnico(CadastroBase):
 
         if len(telefone) != 11:
             self.abre_popup('Valor inválido', 'O campo Telefone deve conter 11 dígitos')
-            return False
-
-        return True
-
-    def valida_turno(self):
-        turno = self.turno.get()
-        turnos_validos = ['M', 'T', 'N']
-        if turno not in turnos_validos:
-            self.abre_popup('Turno invalido', 'O campo Turno deve conter apenas M, T ou N.')
-            return False
-
-        return True
-
-    def valida_equipe(self):
-        equipe = self.equipe.get()
-
-        if not equipe.isupper():
-            self.abre_popup('Equipe invalida', 'O campo Equipe deve conter apenas uma letra maiuscula.')
             return False
 
         return True
