@@ -18,12 +18,12 @@ class CadastrarTécnico(CadastroBase):
         self.cria_elementos()
 
     def cria_elementos(self):
-        self.adiciona_campo('CPF:', self.cpf)
+        self.adiciona_campo('CPF: (11 digitos)', self.cpf)
         self.adiciona_campo('Nome:', self.nome)
         self.adiciona_campo('Sobrenome:', self.sobrenome)
-        self.adiciona_campo('Telefone:', self.telefone)
-        self.adiciona_campo('Turno:', self.turno)
-        self.adiciona_campo('Equipe:', self.equipe)
+        self.adiciona_campo('Telefone: (11 digitos)', self.telefone)
+        self.adiciona_campo('Turno: (M=Manhã, T=Tarde, N=Noite)', self.turno)
+        self.adiciona_campo('Equipe: (1 letra)', self.equipe)
 
         cadastra_button = tk.Button(self.janela, text="Cadastrar", command=self.cadastra_técnico)
         cadastra_button.grid(column=0, row=self.linha + 2, padx=5, pady=8, columnspan=2)
@@ -34,6 +34,8 @@ class CadastrarTécnico(CadastroBase):
     def cadastra_técnico(self):
         # validações
         if not self.valida_cpf():
+            return
+        if not self.valida_turno():
             return
 
         # TODO: fazer as outras validações aqui
@@ -55,6 +57,15 @@ class CadastrarTécnico(CadastroBase):
 
         if len(cpf) != 11:
             self.abre_popup('Valor inválido', 'O campo CPF deve conter 11 dígitos')
+            return False
+
+        return True
+
+    def valida_turno(self):
+        turno = self.turno.get()
+        turnos_validos = ['M', 'T', 'N']
+        if turno not in turnos_validos:
+            self.abre_popup('Turno invalido', 'O campo Turno deve conter apenas M, T ou N.')
             return False
 
         return True

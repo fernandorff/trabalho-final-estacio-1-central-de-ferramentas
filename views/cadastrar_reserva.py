@@ -35,8 +35,6 @@ class CadastrarReserva(CadastroBase):
         if not self.valida_id():
             return
 
-
-
         reserva = Reserva(self.id_reserva.get(),
                           self.id_ferramenta.get(),
                           self.id_tecnico.get(),
