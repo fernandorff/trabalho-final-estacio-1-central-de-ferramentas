@@ -108,14 +108,12 @@ Desenvolver uma aplicação para gerenciamento de ferramentas em um ambiente de 
 - Cadastro de ferramentas (admin only)
 
 ```mermaid
-flowchart TB
-    Admin --> Cadastro.T
-    Admin --> Cadastro.F
-    Menu--> Admin
-    Menu --> Consulta.T --> Descricao.T
-    Menu --> Consulta.F --> Descricao.F --> Reservar.F --> Criar.R
-    Menu --> Consulta.R --> Descricao.R 
-    Menu --> Minhas.R --> Retirar.F --> Devolver.F --> Encerrar.R
+    Menu --> Consulta.T 
+    Menu --> Cadastro.T
+    Menu --> Consulta.F 
+    Menu --> Cadastro.F 
+    Menu --> Consulta.R
+    Menu --> Cadastro.R 
 ```
 > T = Tecnico | F = Ferramenta | R = Reserva
 
