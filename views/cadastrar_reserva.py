@@ -1,9 +1,11 @@
 import tkinter as tk
+from tkcalendar import *
 from models import Reserva
 from views.janela_base import CadastroBase
-
+import csv
 
 class CadastrarReserva(CadastroBase):
+
     def __init__(self):
         CadastroBase.__init__(self, 'Cadastro de Reservas', 'reservas.csv', altura=280)
 
@@ -18,9 +20,33 @@ class CadastrarReserva(CadastroBase):
         self.cria_elementos()
 
     def cria_elementos(self):
+
+        filename = open('tecnicos.csv', 'r')
+
+        file = csv.DictReader(filename)
+
+        id_cpf = []
+        nome = []
+        sobrenome = []
+
+        for col in file:
+            id_cpf.append(col['id_cpf'])
+            nome.append(col['nome'])
+            sobrenome.append(col['sobrenome'])
+
+        opcoes_tecnico = []
+
+        index = 0
+        for i in id_cpf:
+            conjunto = [id_cpf[index], nome[index], sobrenome[index]]
+            opcoes_tecnico.append(' '.join(conjunto))
+            index += 1
+
+        print(opcoes_tecnico)
+
         self.adiciona_campo('Identificação da Reserva', self.id_reserva)
         self.adiciona_campo('Identificação da Ferramenta', self.id_ferramenta)
-        self.adiciona_campo('Identificação do Técnico', self.id_tecnico)
+        self.adiciona_dropdown('Identificação do Técnico', self.id_tecnico, opcoes_tecnico)
         self.adiciona_campo('Data da reserva', self.data_reserva)
         self.adiciona_campo('Data da entrega', self.data_entrega)
         self.adiciona_campo('Status da reserva', self.status)

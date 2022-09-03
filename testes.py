@@ -1,23 +1,25 @@
-from tkinter import *
+# importing the module
+import csv
 
-OPTIONS = [
-"Jan",
-"Feb",
-"Mar"
-] #etc
+filename = open('tecnicos.csv', 'r')
 
-master = Tk()
+file = csv.DictReader(filename)
 
-variable = StringVar(master)
-variable.set(OPTIONS[0]) # default value
+id_cpf = []
+nome = []
+sobrenome = []
 
-w = OptionMenu(master, variable, *OPTIONS)
-w.pack()
+for col in file:
+    id_cpf.append(col['id_cpf'])
+    nome.append(col['nome'])
+    sobrenome.append(col['sobrenome'])
 
-def ok():
-    print ("value is:" + variable.get())
+opcoes_tecnico = []
 
-button = Button(master, text="OK", command=ok)
-button.pack()
+index = 0
+for i in id_cpf:
+    conjunto = [id_cpf[index], nome[index], sobrenome[index]]
+    opcoes_tecnico.append(' '.join(conjunto))
+    index += 1
 
-mainloop()
+print(opcoes_tecnico)
