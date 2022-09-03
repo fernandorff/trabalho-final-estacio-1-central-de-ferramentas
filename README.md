@@ -72,10 +72,9 @@ Desenvolver uma aplicação para gerenciamento de ferramentas em um ambiente de 
 > - descricao : string
 > - fabricante : int
 > - voltagem : int
-> - part_num : int
-> - tamanho : int
+> - peso_g : int
 > - tipo : string
-> - material : string
+> - quantidade : int
 
 - Estados
 > disponivel : boolean
@@ -110,13 +109,12 @@ Desenvolver uma aplicação para gerenciamento de ferramentas em um ambiente de 
 
 ```mermaid
 flowchart TB
-    Admin --> Cadastro.T
-    Admin --> Cadastro.F
-    Menu--> Admin
-    Menu --> Consulta.T --> Descricao.T
-    Menu --> Consulta.F --> Descricao.F --> Reservar.F --> Criar.R
-    Menu --> Consulta.R --> Descricao.R 
-    Menu --> Minhas.R --> Retirar.F --> Devolver.F --> Encerrar.R
+    Menu --> ConsultaTecnicos
+    Menu --> CadastroTecnicos
+    Menu --> ConsultaFerramentas
+    Menu --> CadastroFerramentas
+    Menu --> ConsultaReservas
+    Menu --> CadastroReservas
 ```
 > T = Tecnico | F = Ferramenta | R = Reserva
 
