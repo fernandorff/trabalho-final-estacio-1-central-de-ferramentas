@@ -1,9 +1,10 @@
 import tkinter as tk
 from tkinter import *
 from views.janela_base import JanelaBase
-from views.lista_tecnicos import ListaTécnicos
-from views.cadastro_tecnico import CadastroDeTécnico
-
+from views.listar_tecnicos import ListarTécnicos
+from views.cadastrar_tecnico import CadastrarTécnico
+from views.listar_ferramentas import ListarFerramentas
+from views.cadastrar_ferramenta import CadastrarFerramenta
 
 class MenuPrincipal(JanelaBase):
     def __init__(self):
@@ -51,7 +52,7 @@ class MenuPrincipal(JanelaBase):
         lista_técnico_button = tk.Button(
             frame,
             text='Listar Ferramentas',
-            command=lambda: self.abre_lista_técnico()
+            command=lambda: self.abre_lista_ferramenta()
         )
         lista_técnico_button.grid(column=0, row=linha, sticky=tk.EW, padx=10, pady=10, ipadx=10, ipady=10)
 
@@ -59,7 +60,7 @@ class MenuPrincipal(JanelaBase):
         cadastro_técnico_button = tk.Button(
             frame,
             text='Cadastrar nova Ferramenta',
-            command=lambda: self.abre_cadastro_técnico()
+            command=lambda: self.abre_cadastro_ferramenta()
         )
         cadastro_técnico_button.grid(column=1, row=linha, sticky=tk.EW, padx=10, pady=5, ipadx=10, ipady=10)
         linha += 2
@@ -79,7 +80,13 @@ class MenuPrincipal(JanelaBase):
         )
 
     def abre_lista_técnico(self):
-        self.janela = ListaTécnicos()
+        self.janela = ListarTécnicos()
 
     def abre_cadastro_técnico(self):
-        self.janela = CadastroDeTécnico()
+        self.janela = CadastrarTécnico()
+
+    def abre_lista_ferramenta(self):
+        self.janela = ListarFerramentas()
+
+    def abre_cadastro_ferramenta(self):
+        self.janela = CadastrarFerramenta()
