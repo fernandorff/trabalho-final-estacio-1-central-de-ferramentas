@@ -1,6 +1,9 @@
 import tkinter as tk
 from tkinter import *
+
+from views.cadastrar_reserva import CadastrarReserva
 from views.janela_base import JanelaBase
+from views.listar_reservas import ListarReservas
 from views.listar_tecnicos import ListarTécnicos
 from views.cadastrar_tecnico import CadastrarTécnico
 from views.listar_ferramentas import ListarFerramentas
@@ -49,12 +52,12 @@ class MenuPrincipal(JanelaBase):
         linha += 1
 
         # lista ferramentas:
-        lista_técnico_button = tk.Button(
+        lista_ferramenta_button = tk.Button(
             frame,
             text='Listar Ferramentas',
             command=lambda: self.abre_lista_ferramenta()
         )
-        lista_técnico_button.grid(column=0, row=linha, sticky=tk.EW, padx=10, pady=10, ipadx=10, ipady=10)
+        lista_ferramenta_button.grid(column=0, row=linha, sticky=tk.EW, padx=10, pady=10, ipadx=10, ipady=10)
 
         # cadastro ferramentas:
         cadastro_técnico_button = tk.Button(
@@ -63,6 +66,23 @@ class MenuPrincipal(JanelaBase):
             command=lambda: self.abre_cadastro_ferramenta()
         )
         cadastro_técnico_button.grid(column=1, row=linha, sticky=tk.EW, padx=10, pady=5, ipadx=10, ipady=10)
+        linha += 1
+
+        # lista reservas:
+        lista_ferramenta_button = tk.Button(
+            frame,
+            text='Listar Reservas',
+            command=lambda: self.abre_lista_reserva()
+        )
+        lista_ferramenta_button.grid(column=0, row=linha, sticky=tk.EW, padx=10, pady=10, ipadx=10, ipady=10)
+
+        # cadastro reservas:
+        cadastro_reserva_button = tk.Button(
+            frame,
+            text='Cadastrar nova Reserva',
+            command=lambda: self.abre_cadastro_reserva()
+        )
+        cadastro_reserva_button.grid(column=1, row=linha, sticky=tk.EW, padx=10, pady=5, ipadx=10, ipady=10)
         linha += 2
 
         # sair:
@@ -90,3 +110,9 @@ class MenuPrincipal(JanelaBase):
 
     def abre_cadastro_ferramenta(self):
         self.janela = CadastrarFerramenta()
+
+    def abre_cadastro_reserva(self):
+        self.janela = CadastrarReserva()
+
+    def abre_lista_reserva(self):
+        self.janela = ListarReservas()

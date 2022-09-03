@@ -22,3 +22,13 @@ class Ferramenta:
         self.tipo = tipo
         self.material = material
         self.reserva_máxima = reserva_máxima
+
+
+class Reserva:
+    def __init__(self, id_reserva, id_ferramenta, id_tecnico, data_reserva, data_entrega, status):
+        self.id_reserva = id_reserva
+        self.id_ferramenta = id_ferramenta
+        self.id_tecnico = id_tecnico
+        self.data_reserva = data_reserva
+        self.data_entrega = data_entrega
+        self.status = status
