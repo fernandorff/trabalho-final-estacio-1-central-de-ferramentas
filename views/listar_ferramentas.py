@@ -2,8 +2,8 @@ from tkinter import *
 from models import Ferramenta
 from views.janela_base import ListagemBase
 
-
 class ListarFerramentas(ListagemBase):
+
     def __init__(self):
         ListagemBase.__init__(self, 'Listagem de Ferramentas', 'ferramentas.csv')
 
@@ -21,53 +21,42 @@ class ListarFerramentas(ListagemBase):
                                   'descrição',
                                   'fabricante',
                                   'voltagem',
-                                  'part_num',
-                                  'tamanho',
-                                  'unidade_tamanho',
+                                  'peso_g',
                                   'tipo',
-                                  'material',
-                                  'reserva_máxima')
+                                  'quantidade')
 
         # formata colunas
         self.tabela.column('#0', width=0, stretch=NO)
         self.tabela.column('id_ferramenta', anchor=CENTER, width=95, stretch=YES)
         self.tabela.column('modelo', anchor=CENTER, width=95, stretch=YES)
-        self.tabela.column('descrição', anchor=CENTER, width=95, stretch=YES)
+        self.tabela.column('descricao', anchor=CENTER, width=95, stretch=YES)
         self.tabela.column('fabricante', anchor=CENTER, width=95, stretch=YES)
         self.tabela.column('voltagem', anchor=CENTER, width=95, stretch=YES)
-        self.tabela.column('part_num', anchor=CENTER, width=95, stretch=YES)
-        self.tabela.column('tamanho', anchor=CENTER, width=95, stretch=YES)
-        self.tabela.column('unidade_tamanho', anchor=CENTER, width=95, stretch=YES)
+        self.tabela.column('peso_g', anchor=CENTER, width=95, stretch=YES)
         self.tabela.column('tipo', anchor=CENTER, width=95, stretch=YES)
-        self.tabela.column('material', anchor=CENTER, width=95, stretch=YES)
-        self.tabela.column('reserva_máxima', anchor=CENTER, width=95, stretch=YES)
+        self.tabela.column('quantidade', anchor=CENTER, width=95, stretch=YES)
 
         # cria cabeçalhos
         self.tabela.heading('id_ferramenta', text='Identificaçao da Ferramenta', anchor=CENTER)
         self.tabela.heading('modelo', text='Modelo', anchor=CENTER)
-        self.tabela.heading('descrição', text='Descrição', anchor=CENTER)
+        self.tabela.heading('descricao', text='Descrição', anchor=CENTER)
         self.tabela.heading('fabricante', text='Fabricante', anchor=CENTER)
         self.tabela.heading('voltagem', text='Voltagem', anchor=CENTER)
         self.tabela.heading('part_num', text='Part Number', anchor=CENTER)
-        self.tabela.heading('tamanho', text='Tamanho', anchor=CENTER)
-        self.tabela.heading('unidade_tamanho', text='Unidade de medida', anchor=CENTER)
+        self.tabela.heading('peso_g', text='Peso em grams', anchor=CENTER)
         self.tabela.heading('tipo', text='Tipo', anchor=CENTER)
-        self.tabela.heading('material', text='Material', anchor=CENTER)
-        self.tabela.heading('reserva_máxima', text='Tempo máximo de reserva', anchor=CENTER)
+        self.tabela.heading('quantidade', text='Quantidade disponível', anchor=CENTER)
 
         for objeto in self.bd.linhas:
             self.tabela.insert(parent='', index='end',
                                values=(objeto.id_ferramenta,
                                        objeto.modelo,
-                                       objeto.descrição,
+                                       objeto.descricao,
                                        objeto.fabricante,
                                        objeto.voltagem,
-                                       objeto.part_num,
-                                       objeto.tamanho,
-                                       objeto.unidade_tamanho,
+                                       objeto.peso_g,
                                        objeto.tipo,
-                                       objeto.material,
-                                       objeto.reserva_máxima))
+                                       objeto.quantidade))
             self.linha += 1
 
         self.tabela.pack(

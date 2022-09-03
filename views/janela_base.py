@@ -75,21 +75,21 @@ class CadastroBase(JanelaBase):
         # banco de dados:
         self.bd = BancoDeDados(arquivo_bd, self.cria_objeto)
 
-    def adiciona_campo(self, título, variável):
-        label = tk.Label(self.janela, text=título)
+    def adiciona_campo(self, titulo, variavel):
+        label = tk.Label(self.janela, text=titulo)
         label.grid(column=0, row=self.linha, sticky=tk.W, padx=5, pady=8)
 
-        entry = tk.Entry(self.janela, textvariable=variável)
+        entry = tk.Entry(self.janela, textvariable=variavel)
         entry.grid(column=1, row=self.linha, sticky=tk.EW, padx=10, pady=5)
 
         self.linha += 1
         return entry
 
-    def adiciona_dropdown(self, título, variável, opcoes):
-        label = tk.Label(self.janela, text=título)
+    def adiciona_dropdown(self, titulo, variavel, opcoes):
+        label = tk.Label(self.janela, text=titulo)
         label.grid(column=0, row=self.linha, sticky=tk.W, padx=5, pady=8)
 
-        entry = tk.OptionMenu(self.janela, variável, *opcoes)
+        entry = tk.OptionMenu(self.janela, variavel, *opcoes)
         entry.grid(column=1, row=self.linha, sticky=tk.EW, padx=10, pady=5)
 
         self.linha += 1

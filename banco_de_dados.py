@@ -6,7 +6,7 @@ class BancoDeDados:
     def __init__(self, caminho, cria_objeto):
         self.caminho = caminho
         self.linhas = []
-        self.lê_arquivo(cria_objeto)
+        self.le_arquivo(cria_objeto)
 
     def salvar(self):
         dados = [linha.__dict__ for linha in self.linhas]
@@ -22,7 +22,7 @@ class BancoDeDados:
             # escreve as linhas:
             writer.writerows(dados)
 
-    def lê_arquivo(self, cria_objeto):
+    def le_arquivo(self, cria_objeto):
         # verifica se o arquivo ainda não foi criado:
         if not os.path.exists(self.caminho):
             # caso o arquivo não exista, cria e retorna uma lista vazia:
