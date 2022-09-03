@@ -74,7 +74,6 @@ Desenvolver uma aplicação para gerenciamento de ferramentas em um ambiente de 
 > - voltagem : int
 > - peso_g : int
 > - tipo : string
-> - material : string
 > - quantidade : int
 
 - Estados
