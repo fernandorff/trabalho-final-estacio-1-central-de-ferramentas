@@ -2,6 +2,8 @@ import tkinter as tk
 from tkinter import *
 from tkinter import ttk
 from banco_de_dados import BancoDeDados
+from tkcalendar import *
+from datetime import date
 
 class JanelaBase(Frame):
 
@@ -91,6 +93,26 @@ class CadastroBase(JanelaBase):
 
         entry = tk.OptionMenu(self.janela, variavel, *opcoes)
         entry.grid(column=1, row=self.linha, sticky=tk.EW, padx=10, pady=5)
+
+        self.linha += 1
+        return entry
+
+    def adiciona_calendario(self):
+        entry = Calendar(self.janela, selectmode="day", year=date.today().year, month=date.today().month,
+                         day=date.today().day)
+        entry.grid(column=1, row=self.linha, sticky=tk.EW, padx=10, pady=5)
+
+
+
+        def grab_date():
+            my_label.config(text="Date is " + entry.get_date())
+
+        my_button = Button(self.janela, text="GEt Date", command=grab_date)
+
+
+        my_label = Label(self.janela, text="")
+
+
 
         self.linha += 1
         return entry

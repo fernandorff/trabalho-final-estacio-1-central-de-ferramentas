@@ -7,7 +7,7 @@ import csv
 class CadastrarReserva(CadastroBase):
 
     def __init__(self):
-        CadastroBase.__init__(self, 'Cadastro de Reservas', 'reservas.csv', altura=280)
+        CadastroBase.__init__(self, 'Cadastro de Reservas', 'reservas.csv', altura=450)
 
         # cria variáveis dos campos:
         self.id_reserva = tk.StringVar()

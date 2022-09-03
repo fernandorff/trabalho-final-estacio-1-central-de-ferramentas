@@ -1,5 +1,5 @@
 from tkinter import *
-from tkcalendar import  *
+from tkcalendar import *
 from datetime import date
 
 root = Tk()
@@ -11,3 +11,12 @@ cal = Calendar(root, selectmode="day", year=date.today().year, month=date.today(
 cal.pack()
 
 def grab_date():
+    my_label.config(text="Date is " + cal.get_date())
+
+my_button = Button(root, text="GEt Date", command=grab_date)
+my_button.pack(pady=20)
+
+my_label = Label(root, text="")
+my_label.pack(pady=20)
+
+root.mainloop()
