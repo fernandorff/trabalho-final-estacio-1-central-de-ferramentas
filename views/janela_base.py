@@ -5,8 +5,8 @@ from banco_de_dados import BancoDeDados
 from tkcalendar import *
 from datetime import date
 
-
 class JanelaBase(Frame):
+
     def __init__(self):
         tk.Frame.__init__(self)
 
@@ -31,8 +31,8 @@ class JanelaBase(Frame):
 
         self.popUp = PopUp(titulo, mensagem)
 
-
 class PopUp(JanelaBase):
+
     def __init__(self, título, mensagem):
         JanelaBase.__init__(self)
 
@@ -59,8 +59,8 @@ class PopUp(JanelaBase):
             expand=True
         )
 
-
 class CadastroBase(JanelaBase):
+
     def __init__(self, título, arquivo_bd, largura=400, altura=270):
         JanelaBase.__init__(self)
 
@@ -87,8 +87,11 @@ class CadastroBase(JanelaBase):
         entry = tk.Entry(self.janela, textvariable=variavel)
         entry.grid(column=1, row=self.linha, sticky=tk.EW, padx=10, pady=5)
 
+        entry = 1
+
         self.linha += 1
         return entry
+
 
     def adiciona_dropdown(self, titulo, variavel, opcoes):
         label = tk.Label(self.janela, text=titulo)
@@ -129,8 +132,8 @@ class CadastroBase(JanelaBase):
             self.limpa_campos()
             self.abre_popup('Sucesso', 'Cadastro realizado com sucesso.')
 
-
 class ListagemBase(JanelaBase):
+
     def __init__(self, título, arquivo_bd, largura=600, altura=400):
         JanelaBase.__init__(self)
 

@@ -1,18 +1,20 @@
 import tkinter as tk
 
 from banco_de_dados import BancoDeDados
-from models import Reserva, Tecnico
+from models import Reserva, Tecnico, Ferramenta
 from views.janela_base import CadastroBase
 import csv
 
-
 class CadastrarReserva(CadastroBase):
+
     def __init__(self, janela_criadora=None, reserva: Reserva = None):
         CadastroBase.__init__(self, 'Cadastro de Reservas', 'reservas.csv', altura=450)
 
         self.altera_cadastro = reserva
         self.janela_criadora = janela_criadora
         self.bd_tecnicos = BancoDeDados('tecnicos.csv', self.cria_tecnico)
+        self.bd_reserva = BancoDeDados('reservas.csv', self.cria_objeto)
+        self.bd_ferramentas = BancoDeDados('ferramentas.csv', self.cria_ferramenta)
 
         # cria variáveis dos campos:
         self.id_reserva = tk.StringVar()
@@ -50,14 +52,40 @@ class CadastrarReserva(CadastroBase):
                 index += 1
             return opcoes_tecnico
 
+        def cria_lista_opcoes_ferramentas():
+            id_ferramenta = []
+            modelo = []
+            fabricante = []
+            for ferramenta in self.bd_ferramentas.linhas:
+                id_ferramenta.append(ferramenta.id_ferramenta)
+                modelo.append(ferramenta.modelo)
+                fabricante.append(ferramenta.fabricante)
+            opcoes_ferramenta = []
+            index = 0
+            for i in id_ferramenta:
+                conjunto = [id_ferramenta[index], modelo[index], fabricante[index]]
+                opcoes_ferramenta.append(' '.join(conjunto))
+                index += 1
+            return opcoes_ferramenta
+
+        opcoes_ferramenta = cria_lista_opcoes_ferramentas()
         opcoes_tecnico = cria_lista_opcoes_tecnicos()
+        opcoes_status = ['Em andamento','Atrasado','Concluido']
+
+        # def id_da_reserva():
+        #     id = 0
+        #     for reserva in self.bd_reserva.linhas:
+        #         id += 1
+        #
+        #     id += 1
+        #     return str(id)
 
         self.adiciona_campo('Identificação da Reserva', self.id_reserva)
-        self.adiciona_campo('Identificação da Ferramenta', self.id_ferramenta)
+        self.adiciona_dropdown('Identificação da Ferramenta', self.id_ferramenta, opcoes_ferramenta)
         self.adiciona_dropdown('Identificação do Técnico', self.id_tecnico, opcoes_tecnico)
         self.adiciona_campo('Data da reserva', self.data_reserva)
         self.adiciona_campo('Data da entrega', self.data_entrega)
-        self.adiciona_campo('Status da reserva', self.status)
+        self.adiciona_dropdown('Status da reserva', self.status, opcoes_status)
 
         texto_cadastro = 'Cadastrar' if self.altera_cadastro is None else 'Alterar cadastro'
         cadastra_button = tk.Button(self.janela, text=texto_cadastro, command=self.confirma_cadastro)
@@ -66,12 +94,15 @@ class CadastrarReserva(CadastroBase):
     def cria_objeto(self, dicionario):
         return Reserva(**dicionario)
 
+    def cria_ferramenta(self, dicionario):
+        return Ferramenta(**dicionario)
+
     def cria_tecnico(self, dicionario):
         return Tecnico(**dicionario)
 
     def confirma_cadastro(self):
-        if not self.valida_id():
-            return
+        # if not self.valida_id():
+        #     return
 
         reserva = Reserva(self.id_reserva.get(),
                           self.id_ferramenta.get(),
