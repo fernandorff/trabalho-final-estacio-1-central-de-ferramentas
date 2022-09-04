@@ -121,6 +121,23 @@ flowchart TB
 
 ---
 
+## Diagrama de classes
+
+```mermaid
+flowchart TB
+    JanelaBase --> LoginAdmin
+    JanelaBase --> MenuPrincipal
+    JanelaBase --> ListagemBase
+    JanelaBase --> CadastroBase
+    ListagemBase --> ConsultaTecnicos
+    CadastroBase --> CadastroTecnicos
+    ListagemBase --> ConsultaFerramentas
+    CadastroBase --> CadastroFerramentas
+    ListagemBase --> ConsultaReservas
+    CadastroBase --> CadastroReservas
+```
+
+---
 
 # Levantamento de Requisitos
 
