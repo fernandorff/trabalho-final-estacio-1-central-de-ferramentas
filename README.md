@@ -127,6 +127,7 @@ flowchart TB
 flowchart TB
     JanelaBase --> LoginAdmin
     JanelaBase --> MenuPrincipal
+    JanelaBase --> PopUp
     JanelaBase --> ListagemBase
     JanelaBase --> CadastroBase
     ListagemBase --> ConsultaTecnicos
