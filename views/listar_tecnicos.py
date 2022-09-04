@@ -1,20 +1,17 @@
 from tkinter import *
 from models import Tecnico
+from views.cadastrar_tecnico import CadastrarTécnico
 from views.janela_base import ListagemBase
 
-class ListarTécnicos(ListagemBase):
 
+class ListarTécnicos(ListagemBase):
     def __init__(self):
         ListagemBase.__init__(self, 'Listagem de Técnicos', 'tecnicos.csv')
-
-        self.cria_elementos()
 
     def cria_objeto(self, dicionario):
         return Tecnico(**dicionario)
 
-    def cria_elementos(self):
-        ListagemBase.cria_elementos(self)
-
+    def popula_tabela(self):
         # define as colunas
         self.tabela['columns'] = ('id_cpf',
                                   'nome',
@@ -48,10 +45,12 @@ class ListarTécnicos(ListagemBase):
                                        objeto.telefone,
                                        objeto.turno,
                                        objeto.equipe))
-            self.linha += 1
 
         self.tabela.pack(
             ipadx=5,
             ipady=5,
             expand=True
         )
+
+    def abre_alterar_cadastro(self, tecnico: Tecnico):
+        self.janela_altera_cadastro = CadastrarTécnico(self, tecnico)

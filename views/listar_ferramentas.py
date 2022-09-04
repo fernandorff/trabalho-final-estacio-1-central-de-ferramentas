@@ -1,20 +1,17 @@
 from tkinter import *
 from models import Ferramenta
+from views.cadastrar_ferramenta import CadastrarFerramenta
 from views.janela_base import ListagemBase
 
-class ListarFerramentas(ListagemBase):
 
+class ListarFerramentas(ListagemBase):
     def __init__(self):
         ListagemBase.__init__(self, 'Listagem de Ferramentas', 'ferramentas.csv')
-
-        self.cria_elementos()
 
     def cria_objeto(self, dicionario):
         return Ferramenta(**dicionario)
 
-    def cria_elementos(self):
-        ListagemBase.cria_elementos(self)
-
+    def popula_tabela(self):
         # define as colunas
         self.tabela['columns'] = ('id_ferramenta',
                                   'modelo',
@@ -56,10 +53,12 @@ class ListarFerramentas(ListagemBase):
                                        objeto.peso_g,
                                        objeto.tipo,
                                        objeto.quantidade))
-            self.linha += 1
 
         self.tabela.pack(
             ipadx=5,
             ipady=5,
             expand=True
         )
+
+    def abre_alterar_cadastro(self, ferramenta: Ferramenta):
+        self.janela_altera_cadastro = CadastrarFerramenta(self, ferramenta)

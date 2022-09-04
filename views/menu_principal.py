@@ -9,6 +9,7 @@ from views.cadastrar_tecnico import CadastrarTécnico
 from views.listar_ferramentas import ListarFerramentas
 from views.cadastrar_ferramenta import CadastrarFerramenta
 
+
 class MenuPrincipal(JanelaBase):
     def __init__(self):
         JanelaBase.__init__(self)

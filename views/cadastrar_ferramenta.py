@@ -2,10 +2,13 @@ import tkinter as tk
 from models import Ferramenta
 from views.janela_base import CadastroBase
 
-class CadastrarFerramenta(CadastroBase):
 
-    def __init__(self):
+class CadastrarFerramenta(CadastroBase):
+    def __init__(self, janela_criadora=None, ferramenta: Ferramenta = None):
         CadastroBase.__init__(self, 'Cadastro de Ferramentas', 'ferramentas.csv', altura=450)
+
+        self.altera_cadastro = ferramenta
+        self.janela_criadora = janela_criadora
 
         # cria variáveis dos campos:
         self.id_ferramenta = tk.StringVar()
@@ -16,6 +19,16 @@ class CadastrarFerramenta(CadastroBase):
         self.peso_g = tk.StringVar()
         self.tipo = tk.StringVar()
         self.quantidade = tk.StringVar()
+
+        if ferramenta is not None:
+            self.id_ferramenta.set(ferramenta.id_ferramenta)
+            self.modelo.set(ferramenta.modelo)
+            self.descricao.set(ferramenta.descricao)
+            self.fabricante.set(ferramenta.fabricante)
+            self.voltagem.set(ferramenta.voltagem)
+            self.peso_g.set(ferramenta.peso_g)
+            self.tipo.set(ferramenta.tipo)
+            self.quantidade.set(ferramenta.quantidade)
 
         self.cria_elementos()
 
@@ -46,7 +59,8 @@ class CadastrarFerramenta(CadastroBase):
         self.adiciona_dropdown('Voltagem:', self.voltagem, opcoes_voltagem)
         self.adiciona_dropdown('Tipo:', self.tipo, opcoes_tipo)
 
-        cadastra_button = tk.Button(self.janela, text="Cadastrar", command=self.confirma_cadastro)
+        texto_cadastro = 'Cadastrar' if self.altera_cadastro is None else 'Alterar cadastro'
+        cadastra_button = tk.Button(self.janela, text=texto_cadastro, command=self.confirma_cadastro)
         cadastra_button.grid(column=0, row=self.linha + 2, padx=5, pady=8, columnspan=2)
 
     def cria_objeto(self, dicionario):

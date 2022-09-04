@@ -6,7 +6,8 @@ class BancoDeDados:
     def __init__(self, caminho, cria_objeto):
         self.caminho = caminho
         self.linhas = []
-        self.le_arquivo(cria_objeto)
+        self.cria_objeto = cria_objeto
+        self.le_arquivo()
 
     def salvar(self):
         dados = [linha.__dict__ for linha in self.linhas]
@@ -22,7 +23,7 @@ class BancoDeDados:
             # escreve as linhas:
             writer.writerows(dados)
 
-    def le_arquivo(self, cria_objeto):
+    def le_arquivo(self):
         # verifica se o arquivo ainda não foi criado:
         if not os.path.exists(self.caminho):
             # caso o arquivo não exista, cria e retorna uma lista vazia:
@@ -36,8 +37,30 @@ class BancoDeDados:
                 # converte a linha em um dicionário:
                 dicionario = dict(linha)
                 # passa o dicionário para ser convertido em um objeto:
-                objeto = cria_objeto(dicionario)
+                objeto = self.cria_objeto(dicionario)
                 self.adiciona_linha(objeto)
+
+    def atualiza(self):
+        self.linhas.clear()
+        self.le_arquivo()
 
     def adiciona_linha(self, objeto):
         self.linhas.append(objeto)
+
+    def encontra_linha(self, id_campo, id_valor):
+        for linha in self.linhas:
+            if linha.__dict__[id_campo] == str(id_valor) or int(linha.__dict__[id_campo]) == id_valor:
+                return linha
+
+    def remove_linha(self, id_campo, id_valor):
+        linha_à_excluir = self.encontra_linha(id_campo, id_valor)
+
+        if linha_à_excluir is not None:
+            self.linhas.remove(linha_à_excluir)
+
+    def altera_linha(self, objeto):
+        dicionario = objeto.__dict__
+        id_campo = next(iter(dicionario))
+        for i, linha in enumerate(self.linhas):
+            if linha.__dict__[id_campo] == dicionario[id_campo]:
+                self.linhas[i] = objeto

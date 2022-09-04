@@ -1,12 +1,14 @@
 import tkinter as tk
-from tkinter import *
 from models import Tecnico
 from views.janela_base import CadastroBase
 
-class CadastrarTécnico(CadastroBase):
 
-    def __init__(self):
+class CadastrarTécnico(CadastroBase):
+    def __init__(self, janela_criadora=None, tecnico: Tecnico = None):
         CadastroBase.__init__(self, 'Cadastro de Técnicos', 'tecnicos.csv', 500, 350)
+
+        self.altera_cadastro = tecnico
+        self.janela_criadora = janela_criadora
 
         # cria variáveis dos campos:
         self.cpf = tk.StringVar()
@@ -15,6 +17,14 @@ class CadastrarTécnico(CadastroBase):
         self.telefone = tk.StringVar()
         self.equipe = tk.StringVar()
         self.turno = tk.StringVar()
+
+        if tecnico is not None:
+            self.cpf.set(tecnico.id_cpf)
+            self.nome.set(tecnico.nome)
+            self.sobrenome.set(tecnico.sobrenome)
+            self.telefone.set(tecnico.telefone)
+            self.equipe.set(tecnico.equipe)
+            self.turno.set(tecnico.turno)
 
         self.cria_elementos()
 
@@ -31,8 +41,8 @@ class CadastrarTécnico(CadastroBase):
         self.adiciona_dropdown('Turno:', self.turno, opcoes_turno)
         self.adiciona_dropdown('Equipe:', self.equipe, opcoes_equipe)
 
-        cadastra_button = tk.Button(self.janela, text="Cadastrar", command=self.cadastra_técnico)
-
+        texto_cadastro = 'Cadastrar' if self.altera_cadastro is None else 'Alterar cadastro'
+        cadastra_button = tk.Button(self.janela, text=texto_cadastro, command=self.cadastra_técnico)
         cadastra_button.grid(column=0, row=self.linha + 2, padx=5, pady=8, columnspan=2)
 
     def cria_objeto(self, dicionario):

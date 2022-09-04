@@ -1,5 +1,6 @@
 from tkinter import *
 from models import Reserva
+from views.cadastrar_reserva import CadastrarReserva
 from views.janela_base import ListagemBase
 
 
@@ -7,14 +8,10 @@ class ListarReservas(ListagemBase):
     def __init__(self):
         ListagemBase.__init__(self, 'Listagem de Reservas', 'reservas.csv')
 
-        self.cria_elementos()
-
     def cria_objeto(self, dicionario):
         return Reserva(**dicionario)
 
-    def cria_elementos(self):
-        ListagemBase.cria_elementos(self)
-
+    def popula_tabela(self):
         # define as colunas
         self.tabela['columns'] = ('id_reserva',
                                   'id_ferramenta',
@@ -48,10 +45,12 @@ class ListarReservas(ListagemBase):
                                        objeto.data_reserva,
                                        objeto.data_entrega,
                                        objeto.status))
-            self.linha += 1
 
         self.tabela.pack(
             ipadx=5,
             ipady=5,
             expand=True
         )
+
+    def abre_alterar_cadastro(self, reserva: Reserva):
+        self.janela_altera_cadastro = CadastrarReserva(self, reserva)

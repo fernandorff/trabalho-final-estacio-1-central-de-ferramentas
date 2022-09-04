@@ -1,13 +1,18 @@
 import tkinter as tk
-from tkcalendar import *
-from models import Reserva
+
+from banco_de_dados import BancoDeDados
+from models import Reserva, Tecnico
 from views.janela_base import CadastroBase
 import csv
 
-class CadastrarReserva(CadastroBase):
 
-    def __init__(self):
+class CadastrarReserva(CadastroBase):
+    def __init__(self, janela_criadora=None, reserva: Reserva = None):
         CadastroBase.__init__(self, 'Cadastro de Reservas', 'reservas.csv', altura=450)
+
+        self.altera_cadastro = reserva
+        self.janela_criadora = janela_criadora
+        self.bd_tecnicos = BancoDeDados('tecnicos.csv', self.cria_tecnico)
 
         # cria variáveis dos campos:
         self.id_reserva = tk.StringVar()
@@ -17,21 +22,26 @@ class CadastrarReserva(CadastroBase):
         self.data_entrega = tk.StringVar()
         self.status = tk.StringVar()
 
+        if reserva is not None:
+            self.id_reserva.set(reserva.id_reserva)
+            self.id_ferramenta.set(reserva.id_ferramenta)
+            self.id_tecnico.set(reserva.id_tecnico)
+            self.data_reserva.set(reserva.data_reserva)
+            self.data_entrega.set(reserva.data_entrega)
+            self.status.set(reserva.status)
+
         self.cria_elementos()
 
     def cria_elementos(self):
 
         def cria_lista_opcoes_tecnicos():
-            filename = open('tecnicos.csv', 'r')
-            file = csv.DictReader(filename)
-
             id_cpf = []
             nome = []
             sobrenome = []
-            for col in file:
-                id_cpf.append(col['id_cpf'])
-                nome.append(col['nome'])
-                sobrenome.append(col['sobrenome'])
+            for tecnico in self.bd_tecnicos.linhas:
+                id_cpf.append(tecnico.id_cpf)
+                nome.append(tecnico.nome)
+                sobrenome.append(tecnico.sobrenome)
             opcoes_tecnico = []
             index = 0
             for i in id_cpf:
@@ -39,6 +49,7 @@ class CadastrarReserva(CadastroBase):
                 opcoes_tecnico.append(' '.join(conjunto))
                 index += 1
             return opcoes_tecnico
+
         opcoes_tecnico = cria_lista_opcoes_tecnicos()
 
         self.adiciona_campo('Identificação da Reserva', self.id_reserva)
@@ -48,11 +59,15 @@ class CadastrarReserva(CadastroBase):
         self.adiciona_campo('Data da entrega', self.data_entrega)
         self.adiciona_campo('Status da reserva', self.status)
 
-        cadastra_button = tk.Button(self.janela, text="Cadastrar", command=self.confirma_cadastro)
+        texto_cadastro = 'Cadastrar' if self.altera_cadastro is None else 'Alterar cadastro'
+        cadastra_button = tk.Button(self.janela, text=texto_cadastro, command=self.confirma_cadastro)
         cadastra_button.grid(column=0, row=self.linha + 2, padx=5, pady=8, columnspan=2)
 
     def cria_objeto(self, dicionario):
         return Reserva(**dicionario)
+
+    def cria_tecnico(self, dicionario):
+        return Tecnico(**dicionario)
 
     def confirma_cadastro(self):
         if not self.valida_id():
