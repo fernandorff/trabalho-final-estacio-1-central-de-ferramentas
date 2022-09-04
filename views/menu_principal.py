@@ -30,11 +30,6 @@ class MenuPrincipal(JanelaBase):
         linha = 0
         frame = Frame(self.master, bg='#F2B33D')
 
-        label = tk.Label(frame, text='Trabalho de Certificação Mundo 1', font=('Helvetica bold', 20))
-        label.config(bg='#F2B33D')
-        label.grid(column=0, row=linha, columnspan=2, rowspan=2, sticky=tk.EW, padx=5, pady=8, )
-        linha += 2
-
         # lista técnicos:
         lista_técnico_button = tk.Button(
             frame,

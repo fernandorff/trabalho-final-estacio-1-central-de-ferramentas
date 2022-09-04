@@ -1,8 +1,8 @@
-from views.menu_principal import MenuPrincipal
+from views.login_admin import LoginAdmin
 
 
 def main():
-    MenuPrincipal().mainloop()
+    LoginAdmin().mainloop()
 
 
 if __name__ == '__main__':
