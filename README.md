@@ -109,12 +109,12 @@ Desenvolver uma aplicação para gerenciamento de ferramentas em um ambiente de 
 
 ```mermaid
 flowchart TB
-    Menu --> ConsultaTecnicos
-    Menu --> CadastroTecnicos
-    Menu --> ConsultaFerramentas
-    Menu --> CadastroFerramentas
-    Menu --> ConsultaReservas
-    Menu --> CadastroReservas
+    Login --> Menu --> ConsultaTecnicos
+    Login --> Menu --> CadastroTecnicos
+    Login --> Menu --> ConsultaFerramentas
+    Login --> Menu --> CadastroFerramentas
+    Login --> Menu --> ConsultaReservas
+    Login --> Menu --> CadastroReservas
 ```
 > T = Tecnico | F = Ferramenta | R = Reserva
 
