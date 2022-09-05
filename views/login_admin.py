@@ -38,14 +38,17 @@ class LoginAdmin(JanelaBase):
         self.linha_topo += 1
 
         # título:
-        label = tk.Label(self.topo, text='Trabalho de Certificação Mundo 1 - Grupo 7', font=('Helvetica bold', 18))
+        label = tk.Label(
+            self.topo, text='Trabalho de Certificação Mundo 1 - Grupo 7', font=('Helvetica bold', 18))
         label.config(bg='#21BBEF')
-        label.grid(column=0, row=self.linha_topo, sticky=tk.EW, padx=10, pady=10)
+        label.grid(column=0, row=self.linha_topo,
+                   sticky=tk.EW, padx=10, pady=10)
 
         self.linha_topo += 1
 
         # grupo:
-        label = tk.Label(self.topo, text='Membros da equipe', font=('Helvetica bold', 14))
+        label = tk.Label(self.topo, text='Membros da equipe',
+                         font=('Helvetica bold', 14))
         label.config(bg='#BFE0D6')
         label.grid(column=0, row=self.linha_topo, sticky=tk.EW)
         self.linha_topo += 1
@@ -58,13 +61,15 @@ class LoginAdmin(JanelaBase):
                    'Mariana Lucas Fernandes Onorio'
                    ]
         for membro in membros:
-            label = tk.Label(self.topo, text=membro, font=('Helvetica bold', 12))
+            label = tk.Label(self.topo, text=membro,
+                             font=('Helvetica bold', 12))
             label.grid(column=0, row=self.linha_topo, sticky=tk.EW)
             label.config(bg='#BFE0D6')
             self.linha_topo += 1
 
         # login:
-        label = tk.Label(self.login, text='Autenticação', font=('Helvetica bold', 14))
+        label = tk.Label(self.login, text='Autenticação',
+                         font=('Helvetica bold', 14))
         label.grid(column=0, row=self.linha_login, columnspan=2, sticky=tk.W)
         self.linha_login += 1
 
@@ -73,7 +78,8 @@ class LoginAdmin(JanelaBase):
         label.grid(column=0, row=self.linha_login, sticky=tk.W, padx=5, pady=8)
 
         entry = tk.Entry(self.login, textvariable=self.email)
-        entry.grid(column=1, row=self.linha_login, sticky=tk.EW, padx=10, pady=5)
+        entry.grid(column=1, row=self.linha_login,
+                   sticky=tk.EW, padx=10, pady=5)
 
         self.linha_login += 1
 
@@ -81,8 +87,10 @@ class LoginAdmin(JanelaBase):
         label = tk.Label(self.login, text='Senha')
         label.grid(column=0, row=self.linha_login, sticky=tk.W, padx=5, pady=8)
 
-        entry = tk.Entry(self.login, textvariable=self.senha, show='*', width=16)
-        entry.grid(column=1, row=self.linha_login, sticky=tk.EW, padx=10, pady=5)
+        entry = tk.Entry(self.login, textvariable=self.senha,
+                         show='*', width=16)
+        entry.grid(column=1, row=self.linha_login,
+                   sticky=tk.EW, padx=10, pady=5)
 
         self.linha_login += 1
 
@@ -114,9 +122,10 @@ class LoginAdmin(JanelaBase):
         )
 
     def abre_menu(self):
-        if self.email.get() == '' and self.senha.get() == '':
+        if self.email.get() == 'admin@estacio.br' and self.senha.get() == 'mundo1grupo7':
             self.login.pack_forget()
             self.rodapé.pack_forget()
             self.janela = MenuPrincipal()
         else:
-            self.abre_popup('Credenciais inválidas', 'Seu email ou usuário estão incorretos.')
+            self.abre_popup('Credenciais inválidas',
+                            'Seu email ou usuário estão incorretos.')
