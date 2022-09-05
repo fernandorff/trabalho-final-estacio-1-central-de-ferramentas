@@ -28,12 +28,14 @@ class JanelaBase(Frame):
 
         self.popUp = PopUp(titulo, mensagem)
 
+
 class PopUp(JanelaBase):
 
     def __init__(self, título, mensagem):
         JanelaBase.__init__(self)
 
         self.janela = Toplevel(self)
+        self.janela.grab_set()
         self.janela.title(título)
         self.define_dimensões(self.janela, 300, 100)
 

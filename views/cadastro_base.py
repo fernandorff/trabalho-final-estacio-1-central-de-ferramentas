@@ -16,6 +16,7 @@ class CadastroBase(JanelaBase):
         self.altera_cadastro = None
 
         self.janela = Toplevel(self)
+        self.janela.grab_set()
         self.janela.title(título)
         self.define_dimensões(self.janela, largura, altura)
 
@@ -40,7 +41,6 @@ class CadastroBase(JanelaBase):
 
         self.linha += 1
         return entry
-
 
     def adiciona_dropdown(self, titulo, variavel, opcoes):
         label = tk.Label(self.janela, text=titulo)

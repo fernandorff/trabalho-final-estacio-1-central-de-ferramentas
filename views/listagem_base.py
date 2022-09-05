@@ -20,6 +20,7 @@ class ListagemBase(JanelaBase):
         self.janela_altera_cadastro = None
         self.tabela = None
         self.janela = Toplevel(self)
+        self.janela.grab_set()
         self.janela.title(título)
         self.define_dimensões(self.janela, largura, altura)
 
