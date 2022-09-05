@@ -12,7 +12,7 @@
 ## Equipe
 
 - Alessandro Thury de Oliveira
-- Fernando Rocha Fonteles Filho
+- Fernando Rocha Fonteles Filho - Matrícula: 2022 0450 1864
 - Gilson Miranda Neto - Matrícula: 2022 0443 7562
 - Julio Cesar Navagantes Gouveia
 - Mariana Lucas Fernandes Onorio - Matrícula: 2022 0446 5469
