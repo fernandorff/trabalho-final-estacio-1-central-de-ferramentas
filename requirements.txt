@@ -1,0 +1,5 @@
+tkinter
+csv
+FPDF
+tkcalendar
+platform

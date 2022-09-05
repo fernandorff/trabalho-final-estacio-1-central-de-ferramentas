@@ -4,7 +4,9 @@ from banco_de_dados import BancoDeDados
 from relatorio import Relatorio
 from views.janela_base import JanelaBase
 from tkinter.filedialog import *
-import subprocess, os, platform
+import subprocess
+import os
+import platform
 
 
 class ListagemBase(JanelaBase):
@@ -104,7 +106,8 @@ class ListagemBase(JanelaBase):
             self.limpa_seleção()
         else:
             self.linha_selecionada = seleção[0]
-            self.id_selecionado = self.tabela.item(self.linha_selecionada)['values'][0]
+            self.id_selecionado = self.tabela.item(
+                self.linha_selecionada)['values'][0]
             self.excluir_button.pack(side=LEFT)
             self.alterar_button.pack(side=RIGHT)
 
@@ -160,9 +163,12 @@ class ListagemBase(JanelaBase):
         relatorio.output(path)
 
         # abre o arquivo gerado:
-        if platform.system() == 'Darwin':  # macOS
-            subprocess.call(('open', path))
-        elif platform.system() == 'Windows':  # Windows
-            os.startfile(path)
-        else:  # linux
-            subprocess.call(('xdg-open', path))
+        try:
+            if platform.system() == 'Darwin':  # macOS
+                subprocess.call(('open', path))
+            elif platform.system() == 'Windows':  # Windows
+                os.startfile(path)
+            else:  # linux
+                subprocess.call(('xdg-open', path))
+        except FileNotFoundError:
+            print("Nenhuma pasta foi selecionada pelo usuário")
