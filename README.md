@@ -95,12 +95,12 @@ Desenvolver uma aplicação para gerenciamento de ferramentas em um ambiente de 
 
 - Atributos
 
-> - id_cpf -> cpf do técnico
-> - nome -> primeiro nome do técnico
-> - sobrenome -> sobrenome do técnico
-> - telefone -> telefone do técnico com DDD e sem parenteses
-> - turno -> poderá ser: Integral, Manhã, Tarde ou Noite
-> - equipe -> poderá ser: Alfa α, Beta β, Gama γ ou Delta δ
+  > - id_cpf -> cpf do técnico
+  > - nome -> primeiro nome do técnico
+  > - sobrenome -> sobrenome do técnico
+  > - telefone -> telefone do técnico com DDD e sem parenteses
+  > - turno -> poderá ser: Integral, Manhã, Tarde ou Noite
+  > - equipe -> poderá ser: Alfa α, Beta β, Gama γ ou Delta δ
 
 ### :hammer: Ferramenta
 
@@ -119,15 +119,15 @@ Desenvolver uma aplicação para gerenciamento de ferramentas em um ambiente de 
 
 - Atributos
 
-  > - id
-  > - id_ferramenta
-  > - id_tecnico
-  > - data_retirada
-  > - data_devolucao
-  > - status
-
-- Estados
-  > - emAndamento : boolean
+  > - id_reserva -> número identificador da reserva
+  > - id_ferramenta -> número identificador da ferramenta + modelo e fabricante
+  > - id_tecnico -> número identificador do técnico + nome e sobrenome
+  > - data_retirada -> data da retirada
+  > - data_devolucao -> data da entrega prevista
+  > - status -> pode ser: 
+    > - Em andamento: a reserva se encontra entre a data de retirada e a data de entrega 
+    > - Em atraso: a reserva se encontra após a data de entrega
+    > - Concluído: a reserva foi finalizada e a ferramenta foi devolvida
 
 ## Telas de navegação
 
