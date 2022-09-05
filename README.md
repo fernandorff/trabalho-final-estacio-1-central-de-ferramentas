@@ -95,7 +95,7 @@ Desenvolver uma aplicação para gerenciamento de ferramentas em um ambiente de 
 
 - Atributos
 
-> - id_cpf : int
+> - id_cpf -> cpf do técnico
 > - nome : string
 > - sobrenome : string
 > - telefone : int
