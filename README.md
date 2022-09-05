@@ -182,19 +182,10 @@ flowchart TB
 | ----------------------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Cadastro de tecnicos          | O sistema deve permitir que o administrador cadastre novos técnicos com os seguintes atributos: **
 CPF, Nome, Sobrenome, Telefone, Turno, Equipe**.                                                                     |
-| Cadastro de ferramentas       | O sistema deve permitir que o administrador cadastre novas ferramentas com os seguintes atributos: **
-
-ID, Modelo, Fabricante, Descrição, Voltagem, Peso em gramas, Tipo, Quantidade
-disponível**. |
-| Cadastro de reservas | O sistema deve permitir que o administrador cadastre novas reservas com os seguintes
-atributos: **
-ID, ID da ferramenta, ID do técnico, Data da retirada, Data prevista da devolução, Situação da
-reserva**. |
+| Cadastro de ferramentas       | O sistema deve permitir que o administrador cadastre novas ferramentas com os seguintes atributos: **ID, Modelo, Fabricante, Descrição, Voltagem, Peso em gramas, Tipo, Quantidade disponível**. |
+| Cadastro de reservas | O sistema deve permitir que o administrador cadastre novas reservas com os seguintes atributos: **ID, ID da ferramenta, ID do técnico, Data da retirada, Data prevista da devolução, Situação dareserva**. |
 | Consultar tecnicos | O administrador deve ter acesso a lista de tecnicos cadastrados no sistema. |
 | Consultar ferramentas | O administrador deve ter acesso a lista de ferramentas cadastradas no sistema. |
 | Consultar reservas | O administrador deve ter acesso a lista de reservas cadastradas no sistema. |
-| Menu | O sistema deve ter um menu com as opções: **Consultar tecnicos, Cadastrar técnico,
-Consultar ferramentas, Cadastrar ferramenta, Consultar reservas, Cadastrar
-reservas.**
-|
+| Menu | O sistema deve ter um menu com as opções: **Consultar tecnicos, Cadastrar técnico, Consultar ferramentas, Cadastrar ferramenta, Consultar reservas, Cadastrar reservas.** |
 | Impressão de reserva | O sistema deve permitir a impressão da lista de reservas. |
