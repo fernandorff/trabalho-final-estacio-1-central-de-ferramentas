@@ -1,16 +1,20 @@
 ![Alt text](estacio_logo.png?raw=true "Estácio")
 
-### Curso: Desenvolvimento Full Stack
-### Missão Certificação - Mundo 1
-
 # Aplicação "Central de Ferramentaria"
+
+## Informações Gerais
+- **Curso:** Desenvolvimento Full Stack
+- **Missão Certificação:** Mundo 1
+- **Semestre Letivo:** 2022.2
+- **Grupo:** DEVTEAM 7
+
 
 ## Equipe
 - Alessandro Thury de Oliveira
 - Fernando Rocha Fonteles Filho
 - Gilson Miranda Neto
 - Julio Cesar Navagantes Gouveia
-- Mariana Lucas Fernandes Onorio
+- Mariana Lucas Fernandes Onorio - Matrícula: 2022 0446 5469
 
 
 ## Objetivos
@@ -63,7 +67,8 @@ Desenvolver uma aplicação para gerenciamento de ferramentas em um ambiente de 
 
 ### Como rodar a aplicação
 
-- Rode o arquivo main.py
+- Instale todos os modulos citados acima.
+- Rode o arquivo main.py.
 - Na tela de login, utilize as seguintes credenciais:
   - email: admin@estacio.br
   - senha: mundo1grupo7
