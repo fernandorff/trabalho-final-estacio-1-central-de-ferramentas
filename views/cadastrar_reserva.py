@@ -3,6 +3,7 @@ import tkinter as tk
 from banco_de_dados import BancoDeDados
 from models import Reserva, Tecnico, Ferramenta
 from views.cadastro_base import CadastroBase
+from datetime import datetime
 
 class CadastrarReserva(CadastroBase):
 
@@ -71,14 +72,6 @@ class CadastrarReserva(CadastroBase):
         opcoes_tecnico = cria_lista_opcoes_tecnicos()
         opcoes_status = ['Em andamento', 'Em atraso', 'Concluído']
 
-        # def id_da_reserva():
-        #     id = 0
-        #     for reserva in self.bd_reserva.linhas:
-        #         id += 1
-        #
-        #     id += 1
-        #     return str(id)
-
         self.adiciona_campo('Identificação da Reserva', self.id_reserva)
         self.adiciona_dropdown('Identificação da Ferramenta', self.id_ferramenta, opcoes_ferramenta)
         self.adiciona_dropdown('Identificação do Técnico', self.id_tecnico, opcoes_tecnico)
@@ -100,8 +93,14 @@ class CadastrarReserva(CadastroBase):
         return Tecnico(**dicionario)
 
     def confirma_cadastro(self):
-        # if not self.valida_id():
-        #     return
+        if not self.valida_id():
+            return
+        if not self.valida_data(self.data_reserva.get()):
+            return
+        if not self.valida_data(self.data_entrega.get()):
+            return
+
+
 
         reserva = Reserva(self.id_reserva.get(),
                           self.id_ferramenta.get(),
@@ -119,6 +118,22 @@ class CadastrarReserva(CadastroBase):
             return False
 
         return True
+
+    def valida_data(self, data_recebida):
+
+        formato = "%d/%m/%Y"
+        try:
+            valid = bool(datetime.strptime(data_recebida, formato))
+        except ValueError:
+            valid = False
+
+        if not valid:
+            self.abre_popup('Data inválida', 'O campo de Data deve estar no formato DD/MM/AAAA.')
+            return False
+
+        return True
+
+
 
     def limpa_campos(self):
         self.id_reserva.set('')

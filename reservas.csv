@@ -1,3 +1,5 @@
 id_reserva,id_ferramenta,id_tecnico,data_reserva,data_entrega,status
 123,001 D3200 Nikon,12312312312 Fernando Rocha Fonteles Filho,1232,3212,Em andamento
 56566,555 Martelo Shultz,21545785574 Gil Mnet,05/09/2022,08/09/2022,Concluido
+3,001 D32000 Nikon,21545785574 Gil Mnet,312121,232323,Em andamento
+12,001 D32000 Nikon,12312312312 Fernando Rocha Fonteles Filho,05/09/2022,09/09/2022,Em atraso
