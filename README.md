@@ -102,35 +102,29 @@ Desenvolver uma aplicação para gerenciamento de ferramentas em um ambiente de 
 > - turno : string
 > - equipe : string
 
-- Estados
-  > - admin : boolean
-
 ### :hammer: Ferramenta
 
 - Atributos
 
-  > - id : int
-  > - modelo : string
-  > - descricao : string
-  > - fabricante : int
-  > - voltagem : int
-  > - peso_g : int
-  > - tipo : string
-  > - quantidade : int
-
-- Estados
-  > disponivel : boolean
+  > - id
+  > - modelo
+  > - descricao
+  > - fabricante
+  > - voltagem
+  > - peso_g
+  > - tipo
+  > - quantidade
 
 ### :page_with_curl: Reserva de Ferramenta
 
 - Atributos
 
-  > - id : int
-  > - data_reserva : time
-  > - data_retirada : time
-  > - data_devolucao : time
-  > - responsavel : tecnico
-  > - item : ferramenta
+  > - id
+  > - id_ferramenta
+  > - id_tecnico
+  > - data_retirada
+  > - data_devolucao
+  > - status
 
 - Estados
   > - emAndamento : boolean
