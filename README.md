@@ -187,4 +187,4 @@ flowchart TB
 | Consultar ferramentas | O administrador deve ter acesso a lista de ferramentas cadastradas no sistema. |
 | Consultar reservas | O administrador deve ter acesso a lista de reservas cadastradas no sistema. |
 | Menu | O sistema deve ter um menu com as opções: **Consultar tecnicos, Cadastrar técnico, Consultar ferramentas, Cadastrar ferramenta, Consultar reservas, Cadastrar reservas.** |
-| Impressão de reserva | O sistema deve permitir a impressão da lista de reservas. |
+| Impressão de cadastros | O sistema deve permitir a impressão das listas de técnicos, ferramentas e reservas. |
