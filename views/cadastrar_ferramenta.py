@@ -4,10 +4,12 @@ from banco_de_dados import BancoDeDados
 from models import Ferramenta
 from views.cadastro_base import CadastroBase
 
+
 class CadastrarFerramenta(CadastroBase):
 
     def __init__(self, janela_criadora=None, ferramenta: Ferramenta = None):
-        CadastroBase.__init__(self, 'Cadastro de Ferramentas', 'ferramentas.csv', altura=360)
+        CadastroBase.__init__(self, 'Cadastro de Ferramentas',
+                              'ferramentas.csv', altura=360)
         self.bd_ferramentas = BancoDeDados('ferramentas.csv', self.cria_objeto)
 
         self.altera_cadastro = ferramenta
@@ -65,19 +67,21 @@ class CadastrarFerramenta(CadastroBase):
         self.adiciona_dropdown('Tipo:', self.tipo, opcoes_tipo)
 
         texto_cadastro = 'Cadastrar' if self.altera_cadastro is None else 'Alterar cadastro'
-        cadastra_button = tk.Button(self.janela, text=texto_cadastro, command=self.confirma_cadastro)
-        cadastra_button.grid(column=0, row=self.linha + 2, padx=5, pady=8, columnspan=2)
+        cadastra_button = tk.Button(
+            self.janela, text=texto_cadastro, command=self.confirma_cadastro)
+        cadastra_button.grid(column=0, row=self.linha + 2,
+                             padx=5, pady=8, columnspan=2)
 
     def cria_objeto(self, dicionario):
         return Ferramenta(**dicionario)
 
     def confirma_cadastro(self):
-        if not self.valida_id():
-            return
-        if not self.valida_peso_g():
-            return
-        if not self.valida_quantidade():
-            return
+        # if not self.valida_id():
+        #     return
+        # if not self.valida_peso_g():
+        #     return
+        # if not self.valida_quantidade():
+        #     return
 
         ferramenta = Ferramenta(self.id_ferramenta.get(),
                                 self.modelo.get(),
@@ -92,8 +96,9 @@ class CadastrarFerramenta(CadastroBase):
 
     def valida_id(self):
         id_ferramenta = self.id_ferramenta.get()
-        if not id_ferramenta.isdigit():
-            self.abre_popup('ID inválido', 'O campo "Id. da Ferramenta" deve conter apenas números.')
+        if not id_ferramenta.isnumeric():
+            self.abre_popup(
+                'ID inválido', 'O campo "Id. da Ferramenta" deve conter apenas números.')
             return False
         # for ferramenta in self.bd_ferramentas.linhas:
         #     if self.id_ferramenta.get() == ferramenta.id_ferramenta:
@@ -104,14 +109,16 @@ class CadastrarFerramenta(CadastroBase):
 
     def valida_peso_g(self):
         peso_g = self.peso_g.get()
-        if not peso_g.isdigit():
-            self.abre_popup('PESO inválido', 'O campo "Peso em gramas" deve conter apenas números.')
+        if not peso_g.isnumeric():
+            self.abre_popup(
+                'PESO inválido', 'O campo "Peso em gramas" deve conter apenas números.')
             return False
 
     def valida_quantidade(self):
         quantidade = self.quantidade.get()
-        if not quantidade.isdigit():
-            self.abre_popup('QUANTIDADE inválid', 'O campo "Quantidade" deve conter apenas números.')
+        if not quantidade.isnumeric():
+            self.abre_popup('QUANTIDADE inválid',
+                            'O campo "Quantidade" deve conter apenas números.')
             return False
 
     def limpa_campos(self):
