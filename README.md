@@ -119,15 +119,15 @@ Desenvolver uma aplicação para gerenciamento de ferramentas em um ambiente de 
 
 - Atributos
 
-  > - id_reserva -> número identificador da reserva
-  > - id_ferramenta -> número identificador da ferramenta + modelo e fabricante
-  > - id_tecnico -> número identificador do técnico + nome e sobrenome
-  > - data_retirada -> data da retirada
-  > - data_devolucao -> data da entrega prevista
-  > - status -> pode ser: 
-    > - Em andamento: a reserva se encontra entre a data de retirada e a data de entrega 
-    > - Em atraso: a reserva se encontra após a data de entrega
-    > - Concluído: a reserva foi finalizada e a ferramenta foi devolvida
+> - id_reserva -> número identificador da reserva
+> - id_ferramenta -> número identificador da ferramenta + modelo e fabricante
+> - id_tecnico -> número identificador do técnico + nome e sobrenome
+> - data_retirada -> data da retirada
+> - data_devolucao -> data da entrega prevista
+> - status -> pode ser: 
+  > - Em andamento: a reserva se encontra entre a data de retirada e a data de entrega 
+  > - Em atraso: a reserva se encontra após a data de entrega
+  > - Concluído: a reserva foi finalizada e a ferramenta foi devolvida
 
 ## Telas de navegação
 
