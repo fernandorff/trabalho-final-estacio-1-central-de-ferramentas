@@ -16,7 +16,7 @@ class MenuPrincipal(JanelaBase):
 
         # Título da janela:
         self.master.title('Menu Principal')
-        self.master['bg'] = '#F2B33D'
+        self.master['bg'] = '#BFE0D6'
 
         # Ajusta tamanho e posição da tela:
         self.define_dimensões(self.master)
@@ -28,7 +28,7 @@ class MenuPrincipal(JanelaBase):
 
     def cria_elementos(self):
         linha = 0
-        frame = Frame(self.master, bg='#F2B33D')
+        frame = Frame(self.master, bg='#BFE0D6')
 
         # lista técnicos:
         lista_técnico_button = tk.Button(

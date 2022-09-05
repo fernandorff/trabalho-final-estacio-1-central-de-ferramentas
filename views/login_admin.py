@@ -1,6 +1,6 @@
 import tkinter as tk
 from tkinter import Frame
-
+from PIL import Image, ImageTk
 from views.janela_base import JanelaBase
 from views.menu_principal import MenuPrincipal
 
@@ -11,7 +11,7 @@ class LoginAdmin(JanelaBase):
 
         # Título da janela:
         self.master.title('Login')
-        self.master['bg'] = '#F2B33D'
+        self.master['bg'] = '#BFE0D6'
 
         # Ajusta tamanho e posição da tela:
         self.define_dimensões(self.master)
@@ -27,16 +27,26 @@ class LoginAdmin(JanelaBase):
         self.login = Frame(self.master)
         self.rodapé = Frame(self.master)
 
+        # logo:
+        logo_arquivo = Image.open("estacio_logo.png")
+        logo = ImageTk.PhotoImage(logo_arquivo)
+
+        label = tk.Label(self.topo, image=logo, anchor=tk.CENTER)
+        label.image = logo
+        # label.pack()
+        label.grid(column=0, row=self.linha_login, columnspan=2, sticky=tk.EW)
+        self.linha_topo += 1
+
         # título:
-        label = tk.Label(self.topo, text='Trabalho de Certificação Mundo 1', font=('Helvetica bold', 20))
-        label.config(bg='#F8CC66')
-        label.grid(column=0, row=self.linha_topo, sticky=tk.EW)
+        label = tk.Label(self.topo, text='Trabalho de Certificação Mundo 1 - Grupo 7', font=('Helvetica bold', 18))
+        label.config(bg='#21BBEF')
+        label.grid(column=0, row=self.linha_topo, sticky=tk.EW, padx=10, pady=10)
 
         self.linha_topo += 1
 
         # grupo:
-        label = tk.Label(self.topo, text='Grupo 7', font=('Helvetica bold', 14))
-        label.config(bg='#F8CC66')
+        label = tk.Label(self.topo, text='Membros da equipe', font=('Helvetica bold', 14))
+        label.config(bg='#BFE0D6')
         label.grid(column=0, row=self.linha_topo, sticky=tk.EW)
         self.linha_topo += 1
 
@@ -50,7 +60,7 @@ class LoginAdmin(JanelaBase):
         for membro in membros:
             label = tk.Label(self.topo, text=membro, font=('Helvetica bold', 12))
             label.grid(column=0, row=self.linha_topo, sticky=tk.EW)
-            label.config(bg='#F8CC66')
+            label.config(bg='#BFE0D6')
             self.linha_topo += 1
 
         # login:
@@ -77,14 +87,20 @@ class LoginAdmin(JanelaBase):
         self.linha_login += 1
 
         # botão login:
-        login_button = tk.Button(
-            self.login,
-            text='Entrar',
-            command=lambda: self.abre_menu()
-        )
-        login_button.grid(column=0, row=self.linha_login, columnspan=2, sticky=tk.EW, padx=10, pady=10, ipadx=10, ipady=10)
+        login_button = tk.Button(self.login, text='Entrar',
+                                 command=self.abre_menu,
+                                 relief='solid',
+                                 bg='#21BBEF',
+                                 fg='white',
+                                 highlightcolor="#37d3ff",
+                                 borderwidth=1,
+                                 font=15)
+
+        login_button.grid(column=0, row=self.linha_login, columnspan=2, sticky=tk.EW, padx=10, pady=10, ipadx=10,
+                          ipady=10)
 
         self.topo.pack(
+            pady=10,
             expand=True
         )
 
@@ -94,7 +110,7 @@ class LoginAdmin(JanelaBase):
 
         self.rodapé.pack(
             expand=True,
-            pady=50
+            pady=70
         )
 
     def abre_menu(self):

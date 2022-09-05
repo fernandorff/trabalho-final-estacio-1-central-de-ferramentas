@@ -1,6 +1,6 @@
 import tkinter as tk
 from models import Ferramenta
-from views.janela_base import CadastroBase
+from views.cadastro_base import CadastroBase
 
 
 class CadastrarFerramenta(CadastroBase):

@@ -1,12 +1,12 @@
 from tkinter import *
 from models import Ferramenta
 from views.cadastrar_ferramenta import CadastrarFerramenta
-from views.janela_base import ListagemBase
+from views.listagem_base import ListagemBase
 
 
 class ListarFerramentas(ListagemBase):
     def __init__(self):
-        ListagemBase.__init__(self, 'Listagem de Ferramentas', 'ferramentas.csv')
+        ListagemBase.__init__(self, 'Listagem de Ferramentas', 'ferramentas')
 
     def cria_objeto(self, dicionario):
         return Ferramenta(**dicionario)
@@ -34,12 +34,12 @@ class ListarFerramentas(ListagemBase):
         self.tabela.column('quantidade', anchor=CENTER, width=95, stretch=YES)
 
         # cria cabeçalhos
-        self.tabela.heading('id_ferramenta', text='Identificaçao da Ferramenta', anchor=CENTER)
+        self.tabela.heading('id_ferramenta', text='Identificação', anchor=CENTER)
         self.tabela.heading('modelo', text='Modelo', anchor=CENTER)
         self.tabela.heading('descricao', text='Descrição', anchor=CENTER)
         self.tabela.heading('fabricante', text='Fabricante', anchor=CENTER)
         self.tabela.heading('voltagem', text='Voltagem', anchor=CENTER)
-        self.tabela.heading('peso_g', text='Peso em grams', anchor=CENTER)
+        self.tabela.heading('peso_g', text='Peso em gramas', anchor=CENTER)
         self.tabela.heading('tipo', text='Tipo', anchor=CENTER)
         self.tabela.heading('quantidade', text='Quantidade disponível', anchor=CENTER)
 

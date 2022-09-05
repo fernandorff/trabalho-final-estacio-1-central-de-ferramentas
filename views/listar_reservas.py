@@ -1,12 +1,12 @@
 from tkinter import *
 from models import Reserva
 from views.cadastrar_reserva import CadastrarReserva
-from views.janela_base import ListagemBase
+from views.listagem_base import ListagemBase
 
 
 class ListarReservas(ListagemBase):
     def __init__(self):
-        ListagemBase.__init__(self, 'Listagem de Reservas', 'reservas.csv')
+        ListagemBase.__init__(self, 'Listagem de Reservas', 'reservas')
 
     def cria_objeto(self, dicionario):
         return Reserva(**dicionario)

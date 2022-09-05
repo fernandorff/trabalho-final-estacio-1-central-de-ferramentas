@@ -2,8 +2,8 @@ import tkinter as tk
 
 from banco_de_dados import BancoDeDados
 from models import Reserva, Tecnico, Ferramenta
-from views.janela_base import CadastroBase
-import csv
+from views.cadastro_base import CadastroBase
+
 
 class CadastrarReserva(CadastroBase):
 
