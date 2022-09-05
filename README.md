@@ -180,8 +180,7 @@ flowchart TB
 
 | Requisito                     | Descrição                                                                                                                                                                                                                                                   |
 | ----------------------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Cadastro de tecnicos          | O sistema deve permitir que o administrador cadastre novos técnicos com os seguintes atributos: **
-CPF, Nome, Sobrenome, Telefone, Turno, Equipe**.                                                                     |
+| Cadastro de tecnicos          | O sistema deve permitir que o administrador cadastre novos técnicos com os seguintes atributos: **CPF, Nome, Sobrenome, Telefone, Turno, Equipe**.|
 | Cadastro de ferramentas       | O sistema deve permitir que o administrador cadastre novas ferramentas com os seguintes atributos: **ID, Modelo, Fabricante, Descrição, Voltagem, Peso em gramas, Tipo, Quantidade disponível**. |
 | Cadastro de reservas | O sistema deve permitir que o administrador cadastre novas reservas com os seguintes atributos: **ID, ID da ferramenta, ID do técnico, Data da retirada, Data prevista da devolução, Situação dareserva**. |
 | Consultar tecnicos | O administrador deve ter acesso a lista de tecnicos cadastrados no sistema. |
