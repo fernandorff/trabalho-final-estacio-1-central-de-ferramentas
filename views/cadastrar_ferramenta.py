@@ -5,7 +5,7 @@ from views.cadastro_base import CadastroBase
 class CadastrarFerramenta(CadastroBase):
 
     def __init__(self, janela_criadora=None, ferramenta: Ferramenta = None):
-        CadastroBase.__init__(self, 'Cadastro de Ferramentas', 'ferramentas.csv', altura=450)
+        CadastroBase.__init__(self, 'Cadastro de Ferramentas', 'ferramentas.csv', altura=360)
 
         self.altera_cadastro = ferramenta
         self.janela_criadora = janela_criadora

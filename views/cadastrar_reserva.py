@@ -75,8 +75,8 @@ class CadastrarReserva(CadastroBase):
         self.adiciona_campo('Identificação da Reserva', self.id_reserva)
         self.adiciona_dropdown('Identificação da Ferramenta', self.id_ferramenta, opcoes_ferramenta)
         self.adiciona_dropdown('Identificação do Técnico', self.id_tecnico, opcoes_tecnico)
-        self.adiciona_campo('Data da reserva', self.data_reserva)
-        self.adiciona_campo('Data da entrega', self.data_entrega)
+        self.adiciona_campo('Data da reserva (Formato: DD/MM/AAAA)', self.data_reserva)
+        self.adiciona_campo('Data da entrega (Formato: DD/MM/AAAA)', self.data_entrega)
         self.adiciona_dropdown('Status da reserva', self.status, opcoes_status)
 
         texto_cadastro = 'Cadastrar' if self.altera_cadastro is None else 'Alterar cadastro'
@@ -114,8 +114,12 @@ class CadastrarReserva(CadastroBase):
     def valida_id(self):
         id_reserva = self.id_reserva.get()
         if not id_reserva.isdigit():
-            self.abre_popup('Valor inválido', 'O campo "Id Reserva" deve conter apenas números.')
+            self.abre_popup('ID inválido', 'O campo "Id. da Reserva" deve conter apenas números.')
             return False
+        for reserva in self.bd_reserva.linhas:
+            if self.id_reserva.get() == reserva.id_reserva:
+                self.abre_popup('ID inválido', 'O valor inserido já existe.')
+                return False
 
         return True
 

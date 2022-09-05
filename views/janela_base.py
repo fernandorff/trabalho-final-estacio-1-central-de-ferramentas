@@ -37,7 +37,7 @@ class PopUp(JanelaBase):
         self.janela = Toplevel(self)
         self.janela.grab_set()
         self.janela.title(título)
-        self.define_dimensões(self.janela, 300, 100)
+        self.define_dimensões(self.janela, 400, 100)
 
         label = tk.Label(self.janela, text=mensagem)
         label.pack(

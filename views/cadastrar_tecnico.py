@@ -1,11 +1,14 @@
 import tkinter as tk
+
+from banco_de_dados import BancoDeDados
 from models import Tecnico
 from views.cadastro_base import CadastroBase
 
 
 class CadastrarTécnico(CadastroBase):
     def __init__(self, janela_criadora=None, tecnico: Tecnico = None):
-        CadastroBase.__init__(self, 'Cadastro de Técnicos', 'tecnicos.csv', 500, 350)
+        CadastroBase.__init__(self, 'Cadastro de Técnicos', 'tecnicos.csv', 500, 280)
+        self.bd_tecnicos = BancoDeDados('tecnicos.csv', self.cria_objeto)
 
         self.altera_cadastro = tecnico
         self.janela_criadora = janela_criadora
@@ -34,10 +37,10 @@ class CadastrarTécnico(CadastroBase):
 
         opcoes_equipe = ["Alfa α", "Beta β", "Gama γ", "Delta δ"]
 
-        self.adiciona_campo('CPF:\n (11 digitos, apenas numeros)', self.cpf)
+        self.adiciona_campo('CPF: (11 digitos, apenas numeros)', self.cpf)
         self.adiciona_campo('Nome:', self.nome)
         self.adiciona_campo('Sobrenome:', self.sobrenome)
-        self.adiciona_campo('Telefone com DDD:\n (11 digitos, sem parenteses)', self.telefone)
+        self.adiciona_campo('Telefone com DDD: (11 digitos, sem parenteses)', self.telefone)
         self.adiciona_dropdown('Turno:', self.turno, opcoes_turno)
         self.adiciona_dropdown('Equipe:', self.equipe, opcoes_equipe)
 
@@ -71,8 +74,12 @@ class CadastrarTécnico(CadastroBase):
     def valida_cpf(self):
         cpf = self.cpf.get()
         if not cpf.isdigit():
-            self.abre_popup('Valor inválido', 'O campo CPF deve conter apenas números.')
+            self.abre_popup('CPF inválido', 'O campo CPF deve conter apenas números.')
             return False
+        for tecnico in self.bd_tecnicos.linhas:
+            if self.cpf.get() == tecnico.id_cpf:
+                self.abre_popup('CPF inválido', 'O valor inserido já existe.')
+                return False
 
         if len(cpf) != 11:
             self.abre_popup('Valor inválido', 'O campo CPF deve conter 11 dígitos')
@@ -84,11 +91,11 @@ class CadastrarTécnico(CadastroBase):
         nome = self.nome.get()
 
         if not nome.isalpha():
-            self.abre_popup('Nome invalido', 'O campo Nome deve conter apenas letras.')
+            self.abre_popup('NOME invalido', 'O campo Nome deve conter apenas letras.')
             return False
 
         if len(nome) < 3:
-            self.abre_popup('Valor inválido', 'O campo nome deve conter pelo menos 3 letras')
+            self.abre_popup('NOME inválido', 'O campo nome deve conter pelo menos 3 letras')
             return False
 
         return True
@@ -98,11 +105,11 @@ class CadastrarTécnico(CadastroBase):
         sobrenome = ''.join(sobrenome_list)
 
         if not sobrenome.isalpha():
-            self.abre_popup('Sobrenome invalido', 'O campo Sobrenome deve conter apenas letras e espaço.')
+            self.abre_popup('SOBRENOME invalido', 'O campo Sobrenome deve conter apenas letras e espaço.')
             return False
 
         if len(sobrenome) < 3:
-            self.abre_popup('Valor inválido', 'O campo Sobrenome deve conter pelo menos 3 caracteres')
+            self.abre_popup('SOBRENOME inválido', 'O campo Sobrenome deve conter pelo menos 3 caracteres')
             return False
 
         return True
@@ -110,11 +117,11 @@ class CadastrarTécnico(CadastroBase):
     def valida_telefone(self):
         telefone = self.telefone.get()
         if not telefone.isdigit():
-            self.abre_popup('Valor inválido', 'O campo Telefone deve conter apenas números.')
+            self.abre_popup('TELEFONE inválido', 'O campo Telefone deve conter apenas números.')
             return False
 
         if len(telefone) != 11:
-            self.abre_popup('Valor inválido', 'O campo Telefone deve conter 11 dígitos')
+            self.abre_popup('TELEFONE inválido', 'O campo Telefone deve conter 11 dígitos')
             return False
 
         return True
