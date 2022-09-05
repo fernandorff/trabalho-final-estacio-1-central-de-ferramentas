@@ -41,16 +41,16 @@ Desenvolver uma aplicação para gerenciamento de ferramentas em um ambiente de 
 
 ### Entregas obrigatórias
 
-- Cadastro de ferramentas
-- Cadastro de técnicos
-- Consulta as ferramentas cadastradas
-- Consulta dos técnicos cadastrados
+- Cadastro de ferramentas ✅
+- Cadastro de técnicos ✅
+- Consulta as ferramentas cadastradas ✅
+- Consulta dos técnicos cadastrados ✅
 
 ### Entregas bonus
 
-- Cadastro de reserva de ferramenta
-- Consulta de reservas de ferramentas
-- Impressão das reservas de ferramentas
+- Cadastro de reserva de ferramenta ✅
+- Consulta de reservas de ferramentas ✅
+- Impressão das reservas de ferramentas ✅
 
 ---
 
@@ -87,82 +87,42 @@ Desenvolver uma aplicação para gerenciamento de ferramentas em um ambiente de 
 
 ---
 
-# Objetos e Telas
-
-## Objetos
+## Objetos principais
 
 ### :construction_worker: Tecnico
 
 - Atributos
 
-> - id_cpf : int
-> - nome : string
-> - sobrenome : string
-> - telefone : int
-> - turno : string
-> - equipe : string
-
-- Estados
-  > - admin : boolean
+> - id_cpf -> cpf do técnico
+> - nome -> primeiro nome do técnico
+> - sobrenome -> sobrenome do técnico
+> - telefone -> telefone do técnico com DDD e sem parenteses
+> - turno -> poderá ser: Integral, Manhã, Tarde ou Noite
+> - equipe -> poderá ser: Alfa α, Beta β, Gama γ ou Delta δ
 
 ### :hammer: Ferramenta
 
 - Atributos
 
-  > - id : int
-  > - modelo : string
-  > - descricao : string
-  > - fabricante : int
-  > - voltagem : int
-  > - peso_g : int
-  > - tipo : string
-  > - quantidade : int
-
-- Estados
-  > disponivel : boolean
+> - id_ferramenta -> número identificador da ferramenta
+> - modelo -> modelo/nome da ferramenta
+> - descricao -> descrição da ferramenta
+> - fabricante -> nome do fabricante da ferramenta
+> - voltagem -> voltagens disponíveis: 110v, 127v, 220v, 380v, Baterias, N/A (não aplicável)
+> - peso_g -> peso em gramas da ferramenta
+> - tipo -> tipos disponíveis: Cabeamento, Caixa de som, Camera fotográfica, Computador, Gravador de som, Gravador de vídeo, Iluminação, Microfone, Monitor/Tela, Montagem/Construção, Placa de som, Placa de vídeo, Projetor, Outros
+> - quantidade -> quantidade disponível para locação
 
 ### :page_with_curl: Reserva de Ferramenta
 
 - Atributos
 
-  > - id : int
-  > - data_reserva : time
-  > - data_retirada : time
-  > - data_devolucao : time
-  > - responsavel : tecnico
-  > - item : ferramenta
-
-- Estados
-  > - emAndamento : boolean
-
-## Telas de navegação
-
-- Menu principal
-- Consulta de tecnicos (lista)
-  -- Descrição/perfil do tecnico
-- Consulta de ferramentas (lista)
-  -- Descricao da ferramenta -> Reservar ferramenta -> Criar/abrir reserva
-- Consulta de reservas (lista)
-  -- Descrição da reserva
-- Minhas Reservas
-  -- Retirar ferramenta -> Devolver ferramenta -> Fechar reserva
-- Cadastro de tecnicos (admin only)
-- Cadastro de ferramentas (admin only)
-
-```mermaid
-flowchart TB
-    Login --> Menu
-    Menu --> ConsultaTecnicos
-    Menu --> CadastroTecnicos
-    Menu --> ConsultaFerramentas
-    Menu --> CadastroFerramentas
-    Menu --> ConsultaReservas
-    Menu --> CadastroReservas
-```
-
-> T = Tecnico | F = Ferramenta | R = Reserva
-
----
+> - id_reserva -> número identificador da reserva
+> - id_ferramenta -> número identificador da ferramenta + modelo e fabricante
+> - id_tecnico -> número identificador do técnico + nome e sobrenome
+> - data_retirada -> data da retirada
+> - data_devolucao -> data da entrega prevista
+> - status -> pode ser: **Em andamento**: a reserva se encontra entre a data de retirada e a data de entrega | **Em atraso**: a reserva se encontra após a data de entrega | **Concluído**: a reserva foi finalizada e a ferramenta foi devolvida
 
 ## Diagrama de classes
 
@@ -181,20 +141,41 @@ flowchart TB
     CadastroBase --> CadastroReservas
 ```
 
+## Telas de navegação
+
+- Login
+- Menu principal
+- Consulta de tecnicos (lista)
+  -- Poderá editar e excluir cadastro de técnicos
+- Consulta de ferramentas (lista)
+  -- Poderá editar e excluir cadastro de ferramentas
+- Consulta de reservas (lista)
+  -- Poderá editar e excluir cadastro de reservas | Poderá gerar lista de reservas em formato pdf
+- Cadastro de técnico (formulário)
+- Cadastro de ferramentas (formulário)
+- Cadastro de reservas (formulário)
+```mermaid
+flowchart TB
+    Login --> Menu
+    Menu --> ConsultaTecnicos
+    Menu --> CadastroTecnicos
+    Menu --> ConsultaFerramentas
+    Menu --> CadastroFerramentas
+    Menu --> ConsultaReservas
+    Menu --> CadastroReservas
+```
+
 ---
 
 # Levantamento de Requisitos
 
-## Requisitos Funcionais
-
 | Requisito                     | Descrição                                                                                                                                                                                                                                                   |
 | ----------------------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Cadastro de tecnicos          | O sistema deve permitir que o usuário com cargo de **Administrador** cadastre novos técnicos com os seguintes atributos: **CPF, Senha, Nome, Sobrenome, CPF, Telefone, Turno, Equipe**.                                                                     |
-| Cadastro de ferramentas       | O sistema deve permitir que o usuário com cargo de **Administrador** cadastre novas ferramentas com os seguintes atributos: **ID, Modelo, Fabricante, Descrição, Part_Number, Tamanho, Tipo, Material**.                                                    |
-| Consultar tecnicos            | O usuario deve ter acesso a lista de tecnicos cadastrados no sistema.                                                                                                                                                                                       |
-| Consultar ferramentas         | O usuario deve ter acesso a lista de ferramentas cadastradas no sistema.                                                                                                                                                                                    |
-| Menu                          | O sistema deve ter um menu com as opções: **Consultar tecnicos, Consultar ferramentas, Consultar reservas.**                                                                                                                               |
-| Reservar ferramenta           | Se disponivel, o usuario pode reservar uma ferramenta atraves da pagina de descrição da ferramenta. O usuário terá que inserir a hora/data da retirada e da devolução. Obs.: o horario da reserva deve ser no minimo 24 horas antes do horario da retirada. |
-| Geração da reserva            | Apos a confirmação da reserva de ferramenta, deve ser gerado um cadastro de reserva de ferramenta. Atributos: **id, data_reserva, data_retirada, data_devolucao, responsavel, item.**                                                                       |
-| Disponibilidade da ferramenta | O sistema deve alterar o status da ferramenta para indisponivel durante a hora da retirada até a hora da devolução.                                                                                                                                         |
-| Impressão de reserva          | O sistema deve permitir a impressão de reservas.                                                                                                                                                                                                            |
+| Cadastro de tecnicos          | O sistema deve permitir que o administrador cadastre novos técnicos com os seguintes atributos: **CPF, Nome, Sobrenome, Telefone, Turno, Equipe**.                                                                     |
+| Cadastro de ferramentas       | O sistema deve permitir que o administrador cadastre novas ferramentas com os seguintes atributos: **ID, Modelo, Fabricante, Descrição, Voltagem, Peso em gramas, Tipo, Quantidade disponível**.                                                    |
+| Cadastro de reservas       | O sistema deve permitir que o administrador cadastre novas reservas com os seguintes atributos: **ID, ID da ferramenta, ID do técnico, Data da retirada, Data prevista da devolução, Situação da reserva**.                                                    |
+| Consultar tecnicos            | O administrador deve ter acesso a lista de tecnicos cadastrados no sistema.                                                                                                                                                                                       |
+| Consultar ferramentas         | O administrador deve ter acesso a lista de ferramentas cadastradas no sistema.                                                                                                                                                                                    |
+| Consultar reservas         | O administrador deve ter acesso a lista de reservas cadastradas no sistema.                                                                                                                                                                                    |
+| Menu                          | O sistema deve ter um menu com as opções: **Consultar tecnicos, Cadastrar técnico, Consultar ferramentas, Cadastrar ferramenta, Consultar reservas, Cadastrar reservas.**                                                                                                                               |
+| Impressão de reserva          | O sistema deve permitir a impressão da lista de reservas.                                                                                                                                                                                                            |
