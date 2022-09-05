@@ -2,8 +2,8 @@ import tkinter as tk
 from models import Ferramenta
 from views.cadastro_base import CadastroBase
 
-
 class CadastrarFerramenta(CadastroBase):
+
     def __init__(self, janela_criadora=None, ferramenta: Ferramenta = None):
         CadastroBase.__init__(self, 'Cadastro de Ferramentas', 'ferramentas.csv', altura=450)
 
@@ -36,18 +36,20 @@ class CadastrarFerramenta(CadastroBase):
 
         opcoes_voltagem = ["110v", "127v", "220v", "380v", "Baterias", "N/A"]
 
-        opcoes_tipo = ['Camera fotográfica',
-                       'Gravador de vídeo',
-                       'Gravador de som',
-                       'Microfone',
-                       'Projetor',
-                       'Monitor/Tela',
-                       'Placa de vídeo',
-                       'Placa de som',
-                       'Cabeamento',
+        opcoes_tipo = ['Cabeamento',
+                       'Caixa de som',
+                       'Camera fotográfica',
                        'Computador',
+                       'Gravador de som',
+                       'Gravador de vídeo',
                        'Iluminação',
-                       'Outro'
+                       'Microfone',
+                       'Monitor/Tela',
+                       'Montagem/Construção',
+                       'Placa de som',
+                       'Placa de vídeo',
+                       'Projetor',
+                       'Outros'
                        ]
 
         self.adiciona_campo('Identificação da Ferramenta:', self.id_ferramenta)

@@ -122,7 +122,7 @@ class LoginAdmin(JanelaBase):
         )
 
     def abre_menu(self):
-        if self.email.get() == 'admin@estacio.br' and self.senha.get() == 'mundo1grupo7':
+        if self.email.get() == '' and self.senha.get() == '':
             self.login.pack_forget()
             self.rodapé.pack_forget()
             self.janela = MenuPrincipal()

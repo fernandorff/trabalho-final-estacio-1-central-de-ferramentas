@@ -4,7 +4,6 @@ from banco_de_dados import BancoDeDados
 from models import Reserva, Tecnico, Ferramenta
 from views.cadastro_base import CadastroBase
 
-
 class CadastrarReserva(CadastroBase):
 
     def __init__(self, janela_criadora=None, reserva: Reserva = None):
@@ -70,7 +69,7 @@ class CadastrarReserva(CadastroBase):
 
         opcoes_ferramenta = cria_lista_opcoes_ferramentas()
         opcoes_tecnico = cria_lista_opcoes_tecnicos()
-        opcoes_status = ['Em andamento','Atrasado','Concluido']
+        opcoes_status = ['Em andamento', 'Em atraso', 'Concluído']
 
         # def id_da_reserva():
         #     id = 0
