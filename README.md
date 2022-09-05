@@ -1,5 +1,9 @@
-# Aplicação "Central de Ferramentaria"
+![Alt text](estacio_logo.png?raw=true "Estácio")
 
+### Curso: Desenvolvimento Full Stack
+### Missão Certificação - Mundo 1
+
+# Aplicação "Central de Ferramentaria"
 
 ## Equipe
 - Alessandro Thury de Oliveira
@@ -44,6 +48,37 @@ Desenvolver uma aplicação para gerenciamento de ferramentas em um ambiente de 
 - Consulta de reservas de ferramentas
 - Impressão das reservas de ferramentas
 
+---
+
+### Módulos utilizados
+
+- tkinter
+- csv
+- FPDF
+- tkcalendar
+- datetime
+- subprocess
+- os
+- platform
+
+### Como rodar a aplicação
+
+- Rode o arquivo main.py
+- Na tela de login, utilize as seguintes credenciais:
+  - email: admin@estacio.br
+  - senha: mundo1grupo7
+- Você será redirecionado ao Menu Principal, onde terá acesso:
+  - Listar Técnicos
+  - Cadastrar Técnicos
+  - Listar Ferramentas
+  - Cadastrar Ferramentas
+  - Listar Reservas
+  - Cadastrar Reservas
+- Nas telas de listagens:
+  - Gere um relatório clicando no botão "Gerar Relatório"
+  - Altere ou exclua um cadastro selecionando a linha desejada, dois novos botões irão aparecer na parte inferior da tela.
+- Nas telas de cadastro:
+  - As validações dos campos são feitas ao clicar no botão "Cadastrar" ou "Alterar", caso esteja editando um cadastro.
 ---
 
 # Objetos e Telas
