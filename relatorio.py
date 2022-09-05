@@ -1,7 +1,7 @@
 from fpdf import FPDF
 
-
 class Relatorio(FPDF):
+
     def __init__(self, título):
         FPDF.__init__(self, 'P', 'mm', 'A4')
 

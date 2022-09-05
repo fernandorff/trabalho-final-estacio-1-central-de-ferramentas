@@ -19,7 +19,8 @@
 
 ## Objetivos
 
-Desenvolver uma aplicação para gerenciamento de ferramentas em um ambiente de produção de conteúdo audiovisual de grande porte.
+Desenvolver uma aplicação para gerenciamento de ferramentas em um ambiente de produção de conteúdo audiovisual de grande
+porte.
 
 ## Contextualização e processo
 
@@ -34,8 +35,10 @@ Desenvolver uma aplicação para gerenciamento de ferramentas em um ambiente de 
 - Solicitação de reserva são enviadas por por e-mail para o responsável pela Central
 - No momento da reserva deve-se informar: Data e Hora da Retirada e da Devolução
 - Reservas precisam ficar associadas ao técnico responsável pela sua retirada
-- Uma ferramenta só pode ser reservada se ela estiver disponível na data e hora da retirada, ou seja, não pode estar reservada por outro técnico no momento da retirada
-- O responsável pela central controla as devoluções de forma a garantir que as ferramentas estarão sempre disponíveis no momento previsto para a próxima retirada
+- Uma ferramenta só pode ser reservada se ela estiver disponível na data e hora da retirada, ou seja, não pode estar
+  reservada por outro técnico no momento da retirada
+- O responsável pela central controla as devoluções de forma a garantir que as ferramentas estarão sempre disponíveis no
+  momento previsto para a próxima retirada
 
 ## Entregas
 
@@ -70,20 +73,21 @@ Desenvolver uma aplicação para gerenciamento de ferramentas em um ambiente de 
 - Instale todos os modulos citados acima.
 - Rode o arquivo main.py.
 - Na tela de login, utilize as seguintes credenciais:
-  - email: admin@estacio.br
-  - senha: mundo1grupo7
+    - email: admin@estacio.br
+    - senha: mundo1grupo7
 - Você será redirecionado ao Menu Principal, onde terá acesso:
-  - Listar Técnicos
-  - Cadastrar Técnicos
-  - Listar Ferramentas
-  - Cadastrar Ferramentas
-  - Listar Reservas
-  - Cadastrar Reservas
+    - Listar Técnicos
+    - Cadastrar Técnicos
+    - Listar Ferramentas
+    - Cadastrar Ferramentas
+    - Listar Reservas
+    - Cadastrar Reservas
 - Nas telas de listagens:
-  - Gere um relatório clicando no botão "Gerar Relatório"
-  - Altere ou exclua um cadastro selecionando a linha desejada, dois novos botões irão aparecer na parte inferior da tela.
+    - Gere um relatório clicando no botão "Gerar Relatório"
+    - Altere ou exclua um cadastro selecionando a linha desejada, dois novos botões irão aparecer na parte inferior da
+      tela.
 - Nas telas de cadastro:
-  - As validações dos campos são feitas ao clicar no botão "Cadastrar" ou "Alterar", caso esteja editando um cadastro.
+    - As validações dos campos são feitas ao clicar no botão "Cadastrar" ou "Alterar", caso esteja editando um cadastro.
 
 ---
 
@@ -110,7 +114,8 @@ Desenvolver uma aplicação para gerenciamento de ferramentas em um ambiente de 
 > - fabricante -> nome do fabricante da ferramenta
 > - voltagem -> voltagens disponíveis: 110v, 127v, 220v, 380v, Baterias, N/A (não aplicável)
 > - peso_g -> peso em gramas da ferramenta
-> - tipo -> tipos disponíveis: Cabeamento, Caixa de som, Camera fotográfica, Computador, Gravador de som, Gravador de vídeo, Iluminação, Microfone, Monitor/Tela, Montagem/Construção, Placa de som, Placa de vídeo, Projetor, Outros
+> - tipo -> tipos disponíveis: Cabeamento, Caixa de som, Camera fotográfica, Computador, Gravador de som, Gravador de
+    vídeo, Iluminação, Microfone, Monitor/Tela, Montagem/Construção, Placa de som, Placa de vídeo, Projetor, Outros
 > - quantidade -> quantidade disponível para locação
 
 ### :page_with_curl: Reserva de Ferramenta
@@ -122,7 +127,9 @@ Desenvolver uma aplicação para gerenciamento de ferramentas em um ambiente de 
 > - id_tecnico -> número identificador do técnico + nome e sobrenome
 > - data_retirada -> data da retirada
 > - data_devolucao -> data da entrega prevista
-> - status -> pode ser: **Em andamento**: a reserva se encontra entre a data de retirada e a data de entrega | **Em atraso**: a reserva se encontra após a data de entrega | **Concluído**: a reserva foi finalizada e a ferramenta foi devolvida
+> - status -> pode ser: **Em andamento**: a reserva se encontra entre a data de retirada e a data de entrega | **Em
+    atraso**: a reserva se encontra após a data de entrega | **Concluído**: a reserva foi finalizada e a ferramenta foi
+    devolvida
 
 ## Diagrama de classes
 
@@ -154,6 +161,7 @@ flowchart TB
 - Cadastro de técnico (formulário)
 - Cadastro de ferramentas (formulário)
 - Cadastro de reservas (formulário)
+
 ```mermaid
 flowchart TB
     Login --> Menu
@@ -171,11 +179,21 @@ flowchart TB
 
 | Requisito                     | Descrição                                                                                                                                                                                                                                                   |
 | ----------------------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Cadastro de tecnicos          | O sistema deve permitir que o administrador cadastre novos técnicos com os seguintes atributos: **CPF, Nome, Sobrenome, Telefone, Turno, Equipe**.                                                                     |
-| Cadastro de ferramentas       | O sistema deve permitir que o administrador cadastre novas ferramentas com os seguintes atributos: **ID, Modelo, Fabricante, Descrição, Voltagem, Peso em gramas, Tipo, Quantidade disponível**.                                                    |
-| Cadastro de reservas       | O sistema deve permitir que o administrador cadastre novas reservas com os seguintes atributos: **ID, ID da ferramenta, ID do técnico, Data da retirada, Data prevista da devolução, Situação da reserva**.                                                    |
-| Consultar tecnicos            | O administrador deve ter acesso a lista de tecnicos cadastrados no sistema.                                                                                                                                                                                       |
-| Consultar ferramentas         | O administrador deve ter acesso a lista de ferramentas cadastradas no sistema.                                                                                                                                                                                    |
-| Consultar reservas         | O administrador deve ter acesso a lista de reservas cadastradas no sistema.                                                                                                                                                                                    |
-| Menu                          | O sistema deve ter um menu com as opções: **Consultar tecnicos, Cadastrar técnico, Consultar ferramentas, Cadastrar ferramenta, Consultar reservas, Cadastrar reservas.**                                                                                                                               |
-| Impressão de reserva          | O sistema deve permitir a impressão da lista de reservas.                                                                                                                                                                                                            |
+| Cadastro de tecnicos          | O sistema deve permitir que o administrador cadastre novos técnicos com os seguintes atributos: **
+CPF, Nome, Sobrenome, Telefone, Turno, Equipe**.                                                                     |
+| Cadastro de ferramentas       | O sistema deve permitir que o administrador cadastre novas ferramentas com os seguintes atributos: **
+
+ID, Modelo, Fabricante, Descrição, Voltagem, Peso em gramas, Tipo, Quantidade
+disponível**. |
+| Cadastro de reservas | O sistema deve permitir que o administrador cadastre novas reservas com os seguintes
+atributos: **
+ID, ID da ferramenta, ID do técnico, Data da retirada, Data prevista da devolução, Situação da
+reserva**. |
+| Consultar tecnicos | O administrador deve ter acesso a lista de tecnicos cadastrados no sistema. |
+| Consultar ferramentas | O administrador deve ter acesso a lista de ferramentas cadastradas no sistema. |
+| Consultar reservas | O administrador deve ter acesso a lista de reservas cadastradas no sistema. |
+| Menu | O sistema deve ter um menu com as opções: **Consultar tecnicos, Cadastrar técnico,
+Consultar ferramentas, Cadastrar ferramenta, Consultar reservas, Cadastrar
+reservas.**
+|
+| Impressão de reserva | O sistema deve permitir a impressão da lista de reservas. |

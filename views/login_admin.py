@@ -1,11 +1,13 @@
 import tkinter as tk
 from tkinter import Frame
+
 from PIL import Image, ImageTk
+
 from views.janela_base import JanelaBase
 from views.menu_principal import MenuPrincipal
 
-
 class LoginAdmin(JanelaBase):
+
     def __init__(self):
         JanelaBase.__init__(self)
 

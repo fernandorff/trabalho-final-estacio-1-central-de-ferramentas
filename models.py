@@ -1,4 +1,5 @@
 class Tecnico:
+
     def __init__(self, id_cpf, nome, sobrenome, telefone, turno, equipe):
         self.id_cpf = id_cpf
         self.nome = nome.title()
@@ -7,8 +8,8 @@ class Tecnico:
         self.turno = turno
         self.equipe = equipe
 
-
 class Ferramenta:
+
     def __init__(self, id_ferramenta, modelo, descricao, fabricante, voltagem, peso_g, tipo, quantidade):
         self.id_ferramenta = id_ferramenta
         self.modelo = modelo
@@ -19,8 +20,8 @@ class Ferramenta:
         self.tipo = tipo
         self.quantidade = quantidade
 
-
 class Reserva:
+
     def __init__(self, id_reserva, id_ferramenta, id_tecnico, data_reserva, data_entrega, status):
         self.id_reserva = id_reserva
         self.id_ferramenta = id_ferramenta

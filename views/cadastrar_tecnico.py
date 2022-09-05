@@ -4,8 +4,8 @@ from banco_de_dados import BancoDeDados
 from models import Tecnico
 from views.cadastro_base import CadastroBase
 
-
 class CadastrarTécnico(CadastroBase):
+
     def __init__(self, janela_criadora=None, tecnico: Tecnico = None):
         CadastroBase.__init__(self, 'Cadastro de Técnicos', 'tecnicos.csv', 500, 280)
         self.bd_tecnicos = BancoDeDados('tecnicos.csv', self.cria_objeto)

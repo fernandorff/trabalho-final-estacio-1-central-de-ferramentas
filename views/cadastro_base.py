@@ -7,7 +7,6 @@ from tkcalendar import Calendar
 from banco_de_dados import BancoDeDados
 from views.janela_base import JanelaBase
 
-
 class CadastroBase(JanelaBase):
 
     def __init__(self, título, arquivo_bd, largura=400, altura=270):

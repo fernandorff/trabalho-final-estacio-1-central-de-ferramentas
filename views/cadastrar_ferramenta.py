@@ -1,4 +1,6 @@
 import tkinter as tk
+
+from banco_de_dados import BancoDeDados
 from models import Ferramenta
 from views.cadastro_base import CadastroBase
 
@@ -6,6 +8,7 @@ class CadastrarFerramenta(CadastroBase):
 
     def __init__(self, janela_criadora=None, ferramenta: Ferramenta = None):
         CadastroBase.__init__(self, 'Cadastro de Ferramentas', 'ferramentas.csv', altura=360)
+        self.bd_ferramentas = BancoDeDados('ferramentas.csv', self.cria_objeto)
 
         self.altera_cadastro = ferramenta
         self.janela_criadora = janela_criadora
@@ -71,8 +74,10 @@ class CadastrarFerramenta(CadastroBase):
     def confirma_cadastro(self):
         if not self.valida_id():
             return
-
-        # TODO: fazer as outras validações aqui
+        if not self.valida_peso_g():
+            return
+        if not self.valida_quantidade():
+            return
 
         ferramenta = Ferramenta(self.id_ferramenta.get(),
                                 self.modelo.get(),
@@ -88,10 +93,26 @@ class CadastrarFerramenta(CadastroBase):
     def valida_id(self):
         id_ferramenta = self.id_ferramenta.get()
         if not id_ferramenta.isdigit():
-            self.abre_popup('Valor inválido', 'O campo "Id Ferramenta" deve conter apenas números.')
+            self.abre_popup('ID inválido', 'O campo "Id. da Ferramenta" deve conter apenas números.')
             return False
+        for ferramenta in self.bd_ferramentas.linhas:
+            if self.id_ferramenta.get() == ferramenta.id_ferramenta:
+                self.abre_popup('ID inválido', 'O valor inserido já existe.')
+                return False
 
         return True
+
+    def valida_peso_g(self):
+        peso_g = self.peso_g.get()
+        if not peso_g.isdigit():
+            self.abre_popup('PESO inválido', 'O campo "Peso em gramas" deve conter apenas números.')
+            return False
+
+    def valida_quantidade(self):
+        quantidade = self.quantidade.get()
+        if not quantidade.isdigit():
+            self.abre_popup('QUANTIDADE inválid', 'O campo "Quantidade" deve conter apenas números.')
+            return False
 
     def limpa_campos(self):
         self.id_ferramenta.set('')

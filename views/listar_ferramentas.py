@@ -1,10 +1,11 @@
 from tkinter import *
+
 from models import Ferramenta
 from views.cadastrar_ferramenta import CadastrarFerramenta
 from views.listagem_base import ListagemBase
 
-
 class ListarFerramentas(ListagemBase):
+
     def __init__(self):
         ListagemBase.__init__(self, 'Listagem de Ferramentas', 'ferramentas')
 

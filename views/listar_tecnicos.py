@@ -1,10 +1,11 @@
 from tkinter import *
+
 from models import Tecnico
 from views.cadastrar_tecnico import CadastrarTécnico
 from views.listagem_base import ListagemBase
 
-
 class ListarTécnicos(ListagemBase):
+
     def __init__(self):
         ListagemBase.__init__(self, 'Listagem de Técnicos', 'tecnicos')
 

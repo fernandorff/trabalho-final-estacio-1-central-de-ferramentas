@@ -1,16 +1,16 @@
 import tkinter as tk
 from tkinter import *
 
+from views.cadastrar_ferramenta import CadastrarFerramenta
 from views.cadastrar_reserva import CadastrarReserva
+from views.cadastrar_tecnico import CadastrarTécnico
 from views.janela_base import JanelaBase
+from views.listar_ferramentas import ListarFerramentas
 from views.listar_reservas import ListarReservas
 from views.listar_tecnicos import ListarTécnicos
-from views.cadastrar_tecnico import CadastrarTécnico
-from views.listar_ferramentas import ListarFerramentas
-from views.cadastrar_ferramenta import CadastrarFerramenta
-
 
 class MenuPrincipal(JanelaBase):
+
     def __init__(self):
         JanelaBase.__init__(self)
 

@@ -1,6 +1,5 @@
 import tkinter as tk
 from tkinter import END
-from tkinter.filedialog import *
 
 from views.listar_ferramentas import ListarFerramentas
 
@@ -48,6 +47,5 @@ def gen_pdf():
     p1.wrapOn(tela, 300, 50)  # width , height of Paragraph
     p1.drawOn(tela, width - 450, height - 350)  # location of Paragraph
     tela.save()
-
 
 my_w.mainloop()  # Keep the window open

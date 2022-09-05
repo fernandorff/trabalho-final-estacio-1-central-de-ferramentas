@@ -1,10 +1,11 @@
 from tkinter import *
+
 from models import Reserva
 from views.cadastrar_reserva import CadastrarReserva
 from views.listagem_base import ListagemBase
 
-
 class ListarReservas(ListagemBase):
+
     def __init__(self):
         ListagemBase.__init__(self, 'Listagem de Reservas', 'reservas')
 

@@ -1,8 +1,8 @@
 import csv
 import os
 
-
 class BancoDeDados:
+
     def __init__(self, caminho, cria_objeto):
         self.caminho = caminho
         self.linhas = []

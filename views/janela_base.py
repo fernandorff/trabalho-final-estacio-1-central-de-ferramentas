@@ -1,7 +1,6 @@
 import tkinter as tk
 from tkinter import *
 
-
 class JanelaBase(Frame):
 
     def __init__(self):
@@ -27,7 +26,6 @@ class JanelaBase(Frame):
             self.popUp.destroy()
 
         self.popUp = PopUp(titulo, mensagem)
-
 
 class PopUp(JanelaBase):
 

@@ -1,13 +1,13 @@
+import os
+import platform
+import subprocess
 import tkinter as tk
 from tkinter import Toplevel, Scrollbar, RIGHT, Y, HORIZONTAL, BOTTOM, X, ttk, Frame, LEFT
+from tkinter.filedialog import *
+
 from banco_de_dados import BancoDeDados
 from relatorio import Relatorio
 from views.janela_base import JanelaBase
-from tkinter.filedialog import *
-import subprocess
-import os
-import platform
-
 
 class ListagemBase(JanelaBase):
 
