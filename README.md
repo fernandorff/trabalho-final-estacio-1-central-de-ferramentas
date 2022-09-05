@@ -96,24 +96,24 @@ Desenvolver uma aplicação para gerenciamento de ferramentas em um ambiente de 
 - Atributos
 
 > - id_cpf -> cpf do técnico
-> - nome : string
-> - sobrenome : string
-> - telefone : int
-> - turno : string
-> - equipe : string
+> - nome -> primeiro nome do técnico
+> - sobrenome -> sobrenome do técnico
+> - telefone -> telefone do técnico com DDD e sem parenteses
+> - turno -> poderá ser: Integral, Manhã, Tarde ou Noite
+> - equipe -> poderá ser: Alfa α, Beta β, Gama γ ou Delta δ
 
 ### :hammer: Ferramenta
 
 - Atributos
 
-  > - id
-  > - modelo
-  > - descricao
-  > - fabricante
-  > - voltagem
-  > - peso_g
-  > - tipo
-  > - quantidade
+  > - id_ferramenta -> número identificador da ferramenta
+  > - modelo -> modelo/nome da ferramenta
+  > - descricao -> descrição da ferramenta
+  > - fabricante -> nome do fabricante da ferramenta
+  > - voltagem -> voltagens disponíveis: 110v, "127v, 220v, 380v, Baterias, N/A (não aplicável)
+  > - peso_g -> peso em gramas da ferramenta
+  > - tipo -> tipos disponíveis: Cabeamento, Caixa de som, Camera fotográfica, Computador, Gravador de som, Gravador de vídeo, Iluminação, Microfone, Monitor/Tela, Montagem/Construção, Placa de som, Placa de vídeo, Projetor, Outros
+  > - quantidade -> quantidade disponível para locação
 
 ### :page_with_curl: Reserva de Ferramenta
 
