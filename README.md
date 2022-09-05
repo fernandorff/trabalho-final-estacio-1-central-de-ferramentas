@@ -8,6 +8,7 @@
 - **Missão Certificação:** Mundo 1
 - **Semestre Letivo:** 2022.2
 - **Grupo:** DEVTEAM 7
+- **Link para video no Youtube:** https://www.youtube.com/watch?v=j3WDUPts1nY
 
 ## Equipe
 
