@@ -95,10 +95,10 @@ class CadastrarFerramenta(CadastroBase):
         if not id_ferramenta.isdigit():
             self.abre_popup('ID inválido', 'O campo "Id. da Ferramenta" deve conter apenas números.')
             return False
-        for ferramenta in self.bd_ferramentas.linhas:
-            if self.id_ferramenta.get() == ferramenta.id_ferramenta:
-                self.abre_popup('ID inválido', 'O valor inserido já existe.')
-                return False
+        # for ferramenta in self.bd_ferramentas.linhas:
+        #     if self.id_ferramenta.get() == ferramenta.id_ferramenta:
+        #         self.abre_popup('ID inválido', 'O valor inserido já existe.')
+        #         return False
 
         return True
 

@@ -114,10 +114,10 @@ class CadastrarReserva(CadastroBase):
         if not id_reserva.isdigit():
             self.abre_popup('ID inválido', 'O campo "Id. da Reserva" deve conter apenas números.')
             return False
-        for reserva in self.bd_reserva.linhas:
-            if self.id_reserva.get() == reserva.id_reserva:
-                self.abre_popup('ID inválido', 'O valor inserido já existe.')
-                return False
+        # for reserva in self.bd_reserva.linhas:
+        #     if self.id_reserva.get() == reserva.id_reserva:
+        #         self.abre_popup('ID inválido', 'O valor inserido já existe.')
+        #         return False
 
         return True
 

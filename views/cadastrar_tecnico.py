@@ -76,10 +76,10 @@ class CadastrarTécnico(CadastroBase):
         if not cpf.isdigit():
             self.abre_popup('CPF inválido', 'O campo CPF deve conter apenas números.')
             return False
-        for tecnico in self.bd_tecnicos.linhas:
-            if self.cpf.get() == tecnico.id_cpf:
-                self.abre_popup('CPF inválido', 'O valor inserido já existe.')
-                return False
+        # for tecnico in self.bd_tecnicos.linhas:
+        #     if self.cpf.get() == tecnico.id_cpf:
+        #         self.abre_popup('CPF inválido', 'O valor inserido já existe.')
+        #         return False
 
         if len(cpf) != 11:
             self.abre_popup('Valor inválido', 'O campo CPF deve conter 11 dígitos')
